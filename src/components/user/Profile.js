@@ -24,7 +24,7 @@ export default class Profile extends Component {
                     </div>
                     <div>
                         <label htmlFor="LastName">LastName</label>
-                        <input placeholder="Enter your LastName" type="Email" className="form-control" id="passwod"
+                        <input placeholder="Enter your LastName" type="Email" className="form-control" id="password"
                             name="password"/> </div>
                 </div>
                 <a className="btn btn-primary btn-block" href="../website/website-list.html">Websites</a>
