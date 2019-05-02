@@ -1,6 +1,7 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
- export default class Profile extends Component {
+ export default class Register extends Component {
 
     render() {
         return (
@@ -21,8 +22,8 @@ import React, {Component} from "react";
                 <input placeholder="Please verify your password" type="password" className="form-control" id="passwod"
                     name="password"/>
             </div>
-            <a className="btn btn-warning btn-block" href="profile.html">Register</a>
-            <a className="btn btn-success btn-block" href="login.html">Cancel</a>
+            <Link to="/Register" className="btn btn-warning btn-block" href="profile.html">Register</Link>
+            <Link to="/login"className = "btn btn-success btn-block" href="login.html">Cancel</Link>
         </form>
     </div>
         )

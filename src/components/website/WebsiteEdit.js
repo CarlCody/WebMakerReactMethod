@@ -11,7 +11,7 @@ export default class WebsiteEdit extends Component {
             <a className="float-right pt-2" href="website-new.html"><i className="fas fa-plus-square"></i></a>
         </div>
         <div className="col-8">
-            <a href="../user/profile.html"></i></a>
+            <a href="../user/profile.html"></a>
             <span className="navbar-brand fixed-left mb-0 h1">Edit Websites</span>
             <a className="float-right pt-2" href="page-new.html"><i className="fas fa-check"></i></a>
         </div>

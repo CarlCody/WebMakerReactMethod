@@ -1,30 +1,30 @@
-import React, { Component } from 'react'
+import React from "react";
 
-export default class WebsiteList extends Component {
+export default class WebsiteList extends React.Component {
     render() {
         return (
             <div>
                 <nav className="navbar navbar-dark bg-primary fixed-top">
                     <a href="../user/profile.html"><i className="fas fa-chevron-left"></i></a>
                     <span className="navbar-brand mb-0 h1">Websites</span>
-                    <a href="website-new.html"><i className="fas fa-plus-square"></i></a>
+                    <a href="websiteList.js"><i className="fas fa-plus-square"></i></a>
     </nav>
             <section className="container">
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <a href="../page/page-list.html">Address Book App</a>
+                        <a href="../page/page-list.js">Address Book App</a>
                         <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
                     </li>
                     <li className="list-group-item">
-                        <a href="../page/page-list.html">Blogger</a>
+                        <a href="../page/page-list.js">Blogger</a>
                         <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
                     </li>
                     <li className="list-group-item">
-                        <a href="../page/page-list.html">Blogging App</a>
+                        <a href="../page/page-list.js">Blogging App</a>
                         <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
                     </li>
                     <li className="list-group-item">
-                        <a href="../page/page-list.html">Script Testing App</a>
+                        <a href="../page/page-list.js">Script Testing App</a>
                         <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
                     </li>
                 </ul>

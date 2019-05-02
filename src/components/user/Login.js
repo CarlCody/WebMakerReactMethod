@@ -1,6 +1,8 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
-export default class login extends React.Component {
+
+export default class Login extends React.Component {
     render() {
         return (
             <div className="container">
@@ -14,8 +16,8 @@ export default class login extends React.Component {
                         <label htmlFor="password">Passwod</label>
                         <input placeholder="Enter your password" type="password" className="form-control" id="passwod" name="password" />
                     </div>
-                    <a className="btn btn-success btn-block" href="profile.html">Login</a>
-                    <a className="btn btn-primary btn-block" href="register.html">Register</a>
+                    <Link className="btn btn-success btn-block" to="/user/uid">Login</Link>
+                    <Link className="btn btn-primary btn-block" to="/register">Register</Link>
                 </form>
             </div>
         )

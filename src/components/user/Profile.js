@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
+
 
 export default class Profile extends Component {
     render() {
@@ -28,7 +30,7 @@ export default class Profile extends Component {
                             name="password"/> </div>
                 </div>
                 <a className="btn btn-primary btn-block" href="../website/website-list.html">Websites</a>
-                <a className="btn btn-primary btn-block btn-danger" href="register.html">LogOut</a>
+                <Link to="/Login" className="btn btn-primary btn-block btn-danger" href="register.html">LogOut</Link>
             </div>
             <footer>
                     <nav className="navbar navbar-dark bg-primary fixed-bottom">

@@ -1,4 +1,8 @@
+import React from "react";
 
+export default class PageList extends React.Component {
+    render() {
+        return (
 <div>
     <nav className="navbar navbar-light bg-light fixed-top mb-0 h1">
 
@@ -38,11 +42,13 @@
         </div>
         <nav className="navbar navbar-light bg-light fixed-bottom">
             <span className="navbar-brand mb-0 h1"></span>
-            <a href="../user/profile.html"><i className="fas fa-users"></i></a> </nav>
+            <a href="../user/profile.js"><i className="fas fa-users"></i></a> </nav>
 
 
     </section>
 
 </div>
-
+        )
+    }
+}
 
