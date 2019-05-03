@@ -22,8 +22,8 @@ import {Link} from "react-router-dom";
                 <input placeholder="Please verify your password" type="password" className="form-control" id="passwod"
                     name="password"/>
             </div>
-            <Link to="/Register" className="btn btn-warning btn-block" href="profile.html">Register</Link>
-            <Link to="/login"className = "btn btn-success btn-block" href="login.html">Cancel</Link>
+            <Link className="btn btn-warning btn-block" to="/user/123">Register</Link>
+            <Link className = "btn btn-success btn-block" to="/login">Cancel</Link>
         </form>
     </div>
         )

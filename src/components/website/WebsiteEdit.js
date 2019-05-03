@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from "react-router-dom";
 
 export default class WebsiteEdit extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class WebsiteEdit extends Component {
             <a className="float-right pt-2" href="website-new.html"><i className="fas fa-plus-square"></i></a>
         </div>
         <div className="col-8">
-            <a href="../user/profile.html"></a>
+            <Link to="../user/:uid"></Link>
             <span className="navbar-brand fixed-left mb-0 h1">Edit Websites</span>
             <a className="float-right pt-2" href="page-new.html"><i className="fas fa-check"></i></a>
         </div>
@@ -45,16 +46,16 @@ export default class WebsiteEdit extends Component {
             <div className="container">
                 <form>
                     <div className="form-group">
-                        <label for="">Website Name</label>
+                        <label htmlfor="">Website Name</label>
                         <input placeholder="Enter Website Name" className="form-control" type="text" id="name" name="name"/>
                     </div>
                     <div className="form-group">
-                        <label for="description"> Website Description</label>
+                        <label htmlfor="description"> Website Description</label>
                         <textarea rows="5" placeholder="Enter Websites description here...." className="form-control"
                             id="description" name="description"></textarea>
                     </div>
                     <div>
-                        <a className="btn btn-danger btn-block" href="website-list.html">Delete</a>
+                        <Link className="btn btn-danger btn-block" to="/user/:uid/website">Delete</Link>
                     </div>
                 </form>
 
@@ -64,7 +65,7 @@ export default class WebsiteEdit extends Component {
     </section>
     <nav className="navbar navbar-dark bg-primary fixed-bottom">
         <span className="navbar-brand mb-0 h1"></span>
-        <a href="../user/profile.html"><i className="fas fa-users"></i></a> </nav>
+        <Link to="/user/:uid/website/:wid"><i className="fas fa-users"></i></Link> </nav>
 
       </div>
     )

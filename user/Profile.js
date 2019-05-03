@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class login extends React.Component {
+export default class Login extends React.Component {
 render(){
     return (
         <nav class="navbar navbar-dark bg-primary fixed-top">

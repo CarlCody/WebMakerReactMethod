@@ -8,7 +8,7 @@ export default class Profile extends Component {
             <div>
             <nav className="navbar navbar-dark bg-primary fixed-top">
             <span className="navbar-brand mb-0 h1">Profile</span>
-            <a href="profile.html"><i className="fas fa-check"></i></a> </nav>
+            <Link to="profile.html"><i className="fas fa-check"></i></Link> </nav>
         <form>
             <div className="form-group">
                 <label htmlFor="username">Username</label>
@@ -29,13 +29,13 @@ export default class Profile extends Component {
                         <input placeholder="Enter your LastName" type="Email" className="form-control" id="password"
                             name="password"/> </div>
                 </div>
-                <a className="btn btn-primary btn-block" href="../website/website-list.html">Websites</a>
-                <Link to="/Login" className="btn btn-primary btn-block btn-danger" href="register.html">LogOut</Link>
+                <a className="btn btn-primary btn-block" to="/user/123/website">Websites</a>
+                <Link to="/Login" className="btn btn-primary btn-block btn-danger" to="/login,/">LogOut</Link>
             </div>
             <footer>
                     <nav className="navbar navbar-dark bg-primary fixed-bottom">
                             <span className="navbar-brand mb-0 h1"></span>
-                            <a href="profile.html"><i className="fas fa-users"></i></a> </nav>
+                            <Link to="/user/123"><i className="fas fa-users"></i></Link> </nav>
             
             </footer>
             
