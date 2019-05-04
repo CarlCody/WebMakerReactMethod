@@ -1,6 +1,12 @@
 import React from "react";
 
 export default class Login extends React.Component {
+// state example
+//  state ={
+//      username: "Carl",
+//       password: "carl123"
+//  }
+
 render(){
     return (
         <div className="container">
