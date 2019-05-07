@@ -10,14 +10,24 @@ export default class Login extends React.Component {
                 <form>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <input placeholder="Enter your Name" className="form-control" type="text" name="username" id="username" />
+                        <input placeholder="Enter your Name"
+                         className="form-control"
+                          type="text"
+                           name="username"
+                            id="username"
+                            onChange={this.onChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Passwod</label>
-                        <input placeholder="Enter your password" type="password" className="form-control" id="passwod" name="password" />
+                        <input placeholder="Enter your password"
+                         type="password"
+                          className="form-control"
+                           id="passwod"
+                            name="password"
+                            onChange={this.onChange} />
                     </div>
-                    <Link className="btn btn-success btn-block" to="/user/uid">Login</Link>
-                    <Link className="btn btn-primary btn-block" to="/register">Register</Link>
+                    <button className="btn btn-success btn-block" to="/user/uid">Login</button>
+                    <button className="btn btn-primary btn-block" to="/register">Register</button>
                 </form>
             </div>
         )

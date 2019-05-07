@@ -14,7 +14,12 @@ import WidgetChooser from "./components/widget/WidgetChooser";
 // import WebsiteNew from "./components/website/WebsiteNew";
 
 class App extends Component() {
-state = {
+  addUser = (user) => {
+    const newUsers = this.state.users;
+    newUser.push(user);
+  }
+
+  state = {
    users: [
       {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com"},
       {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com"},
@@ -52,6 +57,7 @@ state = {
    
   return (
   <Router>
+    <Switch>
     <Route exact path="/" render={props => (<Login {...props} users={this.state.users}/>)} />
     <Route exact path="/" render={props => (<Login {...props} users={this.state.users}/>)} />
     <Route exact path="/profile" render={props => (<Profile {...props} users={this.state.users}/>)} />>
@@ -59,6 +65,7 @@ state = {
     <Route exact path="/register"render={props => (<Register {...props} users={this.state.users}/>)} />
     <Route exact path="/user/:uid" render={props => (<Profile {...props} users={this.state.users}/>)} />
     <Route exact path="/user/:uid/website" render={props => (<WebsiteList {...props} users={this.state.users}/>)} />
+    </Switch>
     {/* <Route exact path="/user/:uid/website/new" component={WebsiteNew}></Route> */}
     <Route exact path="/user/:uid/website/:wid" component={WebsiteEdit}></Route>
     <Route exact path="/user/:uid/website/:wid/page" component={PageList}></Route>
