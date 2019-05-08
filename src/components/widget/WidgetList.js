@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from "react-rouuter-dom"
+import {Link} from "react-router-dom"
 
 export default class WidgetList extends Component {
     render() {
@@ -32,8 +32,7 @@ export default class WidgetList extends Component {
                             <i className="fas fa-bars"></i>
                         </div>
                         <img className="img fluid"></img>
-                        src="https://sp.yimg.com/ib/th?id=OIP.2Y3NxOdEgsJ64m-fbwmElwHaD5&pid=15.1&rs=1&c=1&qlt=95&w=220&h=115"
-                        alt="gremlin">
+                        src="https://sp.yimg.com/ib/th?id=OIP.2Y3NxOdEgsJ64m-fbwmElwHaD5&pid=15.1&rs=1&c=1&qlt=95&w=220&h=115" alt="gremlin">
 
                             <div>
                             <div className="float-right">

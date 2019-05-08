@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
         password2: ""
     }
 
-    this.onChange = e => {
+    onChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -32,14 +32,18 @@ import {Link} from "react-router-dom";
          }
      }
      const newUser = {
-         _id: (parseInt(this.props.users[this.props.users.length -1]._id) + 1 toString,
+         _id: (parseInt(this.props.users[this.props.users.length -1]._id) + 1).toString(),
          username,
-         password
+         password,
+         email: "",
+         firstName: "",
+         lastName: ""
      };
      this.props.addUser(newUser);
+     this.props.history.push("/user/" + newUser._id)
     }
-    this.props.history.push("/user/" + newUser._id)
-
+   
+ 
     render() {
         const {username,password,password2} = this.state
         return (
@@ -70,8 +74,8 @@ import {Link} from "react-router-dom";
                  type="password2"
                   className="form-control"
                    id="passwod2"
-                    name="password"
-                    value ={password2/>
+                    name="password2"
+                    value ={password2}/>
             </div>
             <button className="btn btn-warning btn-block" href="/user/123">Register</button>
             <button className = "btn btn-success btn-block" href="/login">Cancel</button>
@@ -79,4 +83,4 @@ import {Link} from "react-router-dom";
     </div>
         )
     }
-}
+ }

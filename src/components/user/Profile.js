@@ -14,11 +14,11 @@ export default class Profile extends Component {
     componentDidMount(){
         const uid = this.props.match.params.uid;
          
-        let currentUser = '';
+        let currentUser;
         for (let user of this.props.users) {
           if(user._id === uid) {
-              currentUser = user;]
-              this.showUser(user);
+              currentUser = user;
+              this.showUser(user)
               return;
           }
         }
@@ -36,6 +36,18 @@ export default class Profile extends Component {
               [e.target.name]: e.target.value
           })
       }
+      onSubmit = e => {
+        e.preventDefault();
+        const{username, email, firstName, lastName} = this.state;
+        const newUser = {
+            _id: this.props.match.params.uid,
+            username,
+            email,
+            firstName,
+            lastName
+      }
+      this.props.updateUser(newUser)
+    }
 
     render() {
         const{username,email,firstName,LastName} = this.state;
@@ -43,8 +55,8 @@ export default class Profile extends Component {
             <div>
             <nav className="navbar navbar-dark bg-primary fixed-top">
             <span className="navbar-brand mb-0 h1">Profile</span>
-            <button to="profile.html"><i className="fas fa-check"></i></button> </nav>
-        <form onSubmit={this.onSubmit}>
+            <button className="btn" form="profileform" href="profile.html"><i className="fas fa-check"></i></button> </nav>
+        <form id="profileform" onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <input placeholder="Enter your User Name"
@@ -84,7 +96,7 @@ export default class Profile extends Component {
                           className="form-control"
                            id="password"
                             name="password"
-                            value={lastName}
+                            value={this.lastName}
                             onChange ={this.onChange} /> </div>
                 </div>
                 <a className="btn btn-primary btn-block" to="/user/123/website">Websites</a>
