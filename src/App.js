@@ -17,6 +17,9 @@ class App extends Component() {
   addUser = (user) => {
     const newUsers = this.state.users;
     newUser.push(user);
+    this.setState({
+      users: newUsers
+    });
   }
 
   state = {
@@ -71,7 +74,7 @@ class App extends Component() {
     <Route exact path="/user/:uid/website/:wid/page" component={PageList}></Route>
     <Route exact path="/user/:uid/website/:wid/page/new" component={PageNew}></Route>
     <Route exact path="/user/:uid/website/:wid/page/:pid" component={PageEdit}></Route>
-    <Route exact path="/user/:uid/website/:wid/page/:pid/widget" component={WidgetList}></Route>
+    <Route exact path="/user/:uid/website/:wid/page/:pid/widget" render={props => (<WidgetList {...props} users={this.state.users}/>)} />
     <Route exact path="/user/:uid/website/:wid/page/new/:pid/widget/new" component={WidgetChooser}></Route>
     {/* <Route exact path="/user/:uid/website/:wid/page/new/:pid/widget/:wgid" component={WidgetEdit}></Route> */}
   </Router>
