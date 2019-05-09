@@ -9,12 +9,12 @@ export default class WebsiteNew extends Component {
         <div className="col-4 d-none d-lg-block">
             <Link to="../user/webs/user/:uid/website"><i className="fas fa-chevron-left"></i></Link>
             <span className="navbar-brand fixed-left mb-0 h1">Websites</span>
-            <a className="float-right pt-2" href="website-list.html"><i className="fas fa-plus-square"></i></a>
+            <a className="float-right pt-2" to="website-list.html"><i className="fas fa-plus-square"></i></a>
         </div>
         <div className="col-8">
-            <a className="d-lg-none" href="website-list.html"><i className="fas fa-chevron-left"></i></a>
+            <a className="d-lg-none" to="website-list.html"><i className="fas fa-chevron-left"></i></a>
             <span className="navbar-brand fixed-left mb-0 h1">New Websites</span>
-            <a className="float-right pt-2" href="website-edit.html"><i className="fas fa-check"></i></a>
+            <button class="float-right pt-2" href="website-edit.html"><i className="fas fa-check"></i></button>
         </div>
     </nav>
     <section className="row">
@@ -29,14 +29,7 @@ export default class WebsiteNew extends Component {
                      <Link to="/user/:uid/website/:wid/page">Address book App</Link>
                      <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
                     </li>
-                    <li className="list-group-item">
-                     <Link to="/user/:uid/website/:wid/page">Script Testing App</Link>
-                     <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
-                    </li>
-                    <li className="list-group-item">
-                     <Link to="/user/:uid/website/:wid/page">Blogger</Link>
-                     <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
-                    </li>
+                   
                 </ul>
             </div>
 

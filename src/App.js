@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from './components/user/Login';
 import Profile from './components/user/Profile';
 import Register from './components/user/Register';
@@ -11,6 +11,10 @@ import PageNew from "./components/user/page/PageNew";
 import PageEdit from "./components/user/page/PageEdit";
 import WidgetList from "./components/widget/WidgetList";
 import WidgetChooser from "./components/widget/WidgetChooser";
+import WebsiteNew from  "./components/website/WebsiteEdit";
+import WidgetEdit from "./components/widget/WidgetEdit.js";
+import WidgetYoutube from "./components/widget/WidgetYoutube";
+
 // import WebsiteNew from "./components/website/WebsiteNew";
 class App extends Component {
 
@@ -75,10 +79,10 @@ class App extends Component {
 
    widgets:[
     { _id: "123" , widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
-    { _id : "234", widgetType: "HE A D ING", pageId: "3 21", size : 4, text: "Lore m ipsum"} ,       
+    { _id : "234", widgetType: "HEADING", pageId: "321", size : 4, text: "Lore m ipsum"} ,       
     { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"},
     { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
-    { _id: "678", widgee:  "YOUTUB E ", pageId: "32 1", width: "100%", url: " https://youtu.be/AM 2Ivdi9c4E" }
+    { _id: "678", widgee:  "YOUTUBE ", pageId: "321", width: "100%", url: " https://youtu.be/AM 2Ivdi9c4E" }
    ]
   }
           
@@ -88,23 +92,24 @@ class App extends Component {
    
   return (
   <Router>
-    {/* <Switch> */}
+    <Switch>
     <Route exact path="/" render={props => (<Login {...props} users={this.state.users}/>)} />
-
     <Route exact path="/profile" render={props => (<Profile {...props} users={this.state.users} updateUser={this.updateUser}/>)} />>
     <Route exact path="/login" render={props => (<Login {...props} users={this.state.users}/>)} />
-    <Route exact path="/register"render={props => (<Register {...props} users={this.state.users}/>)} />
+    <Route exact path="/register"render={props => (<Register {...props} users={this.state.users}addUser={this.updateUser} />)} />
     <Route exact path="/user/:uid" render={props => (<Profile {...props} users={this.state.users}/>)} />
     <Route exact path="/user/:uid/website" render={props => (<WebsiteList {...props} users={this.state.users}/>)} />
-  {/* </Swicth> */}
-    {/* <Route exact path="/user/:uid/website/new" component={WebsiteNew}></Route> */}
-    <Route exact path="/user/:uid/website/:wid" component={WebsiteEdit}></Route>
-    <Route exact path="/user/:uid/website/:wid/page" component={PageList}></Route>
-    <Route exact path="/user/:uid/website/:wid/page/new" component={PageNew}></Route>
-    <Route exact path="/user/:uid/website/:wid/page/:pid" component={PageEdit}></Route>
+ 
+  <Route exact path="/user/:uid/website/new" render={props => (<WebsiteNew {...props} users={this.state.users}/>)} />
+    <Route exact path="/user/:uid/website/:wid" render={props => (<WebsiteEdit {...props} users={this.state.users} />)} />>
+    <Route exact path="/user/:uid/website/:wid/page" render={props => (<PageList {...props} users={this.state.users}/>)} />
+    <Route exact path="/user/:uid/website/:wid/page/new" render={props => (<PageNew {...props} users={this.state.users}/>)} />
+    <Route exact path="/user/:uid/website/:wid/page/:pid" render={props => (<PageEdit {...props} users={this.state.users}/>)} />
     <Route exact path="/user/:uid/website/:wid/page/:pid/widget" render={props => (<WidgetList {...props} users={this.state.users}/>)} />
-    <Route exact path="/user/:uid/website/:wid/page/new/:pid/widget/new" component={WidgetChooser}></Route>
-    {/* <Route exact path="/user/:uid/website/:wid/page/new/:pid/widget/:wgid" component={WidgetEdit}></Route> */}
+    <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" render={props => (<WidgetChooser {...props} users={this.state.users}/>)} />
+    <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={props => (<WidgetEdit {...props} users={this.state.users}/>)} />
+    <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={props => (<WidgetYoutube {...props} users={this.state.users}/>)} />
+    </Switch>
   </Router>
   )
 } 
