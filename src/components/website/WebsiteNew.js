@@ -14,7 +14,7 @@ export default class WebsiteNew extends Component {
         <div className="col-8">
             <a className="d-lg-none" to="website-list.html"><i className="fas fa-chevron-left"></i></a>
             <span className="navbar-brand fixed-left mb-0 h1">New Websites</span>
-            <button class="float-right pt-2" href="website-edit.html"><i className="fas fa-check"></i></button>
+            <button class="float-right pt-2" to="website-edit.html"><i className="fas fa-check"></i></button>
         </div>
     </nav>
     <section className="row">

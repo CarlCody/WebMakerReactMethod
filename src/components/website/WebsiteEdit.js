@@ -7,14 +7,14 @@ export default class WebsiteEdit extends Component {
       <div>
         <nav className="navbar navbar-dark bg-primary fixed-top row">
         <div className="col-4 d-none d-lg-block">
-            <a href="website-list.html"><i className="fas fa-chevron-left"></i></a>
+            <a to="/user/:uid/website"><i className="fas fa-chevron-left"></i></a>
             <span className="navbar-brand fixed-left mb-0 h1">Websites</span>
-            <a className="float-right pt-2" href="website-new.html"><i className="fas fa-plus-square"></i></a>
+            <a className="float-right pt-2" to="/user/:uid/website/new"><i className="fas fa-plus-square"></i></a>
         </div>
         <div className="col-8">
-            <Link to="../user/:uid"></Link>
+            <button to="../user/:uid"></button>
             <span className="navbar-brand fixed-left mb-0 h1">Edit Websites</span>
-            <a className="float-right pt-2" href="page-new.html"><i className="fas fa-check"></i></a>
+            <Link className="float-right pt-2" to="/user/:uid/website/:wid/page/new	"><i className="fas fa-check"></i></Link>
         </div>
     </nav>
     <section className="row">
@@ -22,20 +22,20 @@ export default class WebsiteEdit extends Component {
             <div className="container">
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <a href="../page/page-list.html">Address Book App</a>
-                        <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
+                        <a to="/user/:uid/website">Address Book App</a>
+                        <a className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></a>
                     </li>
                     <li className="list-group-item">
-                        <a href="../page/page-list.html">Blogger</a>
-                        <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
+                        <a to="../page/page-list.html">Blogger</a>
+                        <a className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></a>
                     </li>
                     <li className="list-group-item">
-                        <a href="../page/page-list.html">Blogging App</a>
-                        <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
+                        <a to="../page/page-list.html">Blogging App</a>
+                        <a className="float-right" to="website-edit.html"><i className="fas fa-cog"></i></a>
                     </li>
                     <li className="list-group-item">
-                        <a href="../page/page-list.html">Script Testing App</a>
-                        <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
+                        <a to="../page/page-list.html">Script Testing App</a>
+                        <a className="float-right" to="website-edit.html"><i className="fas fa-cog"></i></a>
                     </li>
                     
                 </ul>
