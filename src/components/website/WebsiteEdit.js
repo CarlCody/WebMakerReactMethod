@@ -1,20 +1,51 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
+import uuid from "uuid";
 
 export default class WebsiteEdit extends Component {
+    state={
+        uid: this.props.match.params.uid,
+        websites: [],
+        name: "",
+        description: "",
+    }
+    async componentDidMount(){
+        await this.filterWebsites(this.props.websites);
+    }    
+        
+    filterWebsites = (websites) => {
+    const newWebsites = websites.filter(
+            website => (website.developerId === this.state.uid) 
+        )
+        this.setState({
+            websites: newWebsites
+        });
+    }
+    
+    onChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+    
+    
+
   render() {
+
+      const {uid} = this.state;
+
     return (
       <div>
         <nav className="navbar navbar-dark bg-primary fixed-top row">
         <div className="col-4 d-none d-lg-block">
-            <a to="/user/:uid/website"><i className="fas fa-chevron-left"></i></a>
+            <Link to={`/user/${uid}/website`}><i className="fas fa-chevron-left"></i></Link>
             <span className="navbar-brand fixed-left mb-0 h1">Websites</span>
-            <a className="float-right pt-2" to="/user/:uid/website/new"><i className="fas fa-plus-square"></i></a>
+            <Link className="float-right pt-2" to={`/user/${uid}/website/new`}><i className="fas fa-plus-square"></i></Link>
         </div>
         <div className="col-8">
             <button to="../user/:uid"></button>
             <span className="navbar-brand fixed-left mb-0 h1">Edit Websites</span>
-            <Link className="float-right pt-2" to="/user/:uid/website/:wid/page/new	"><i className="fas fa-check"></i></Link>
+            <Link className="float-right pt-2" to={`/user/${uid}/website/new`}><i className="fas fa-check"></i></Link>
         </div>
     </nav>
     <section className="row">
@@ -22,19 +53,19 @@ export default class WebsiteEdit extends Component {
             <div className="container">
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <a to="/user/:uid/website">Address Book App</a>
+                        <Link to="/user/:uid/website">Address Book App</Link>
+                        <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to="../page/page-list.html">Blogger</Link>
                         <a className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></a>
                     </li>
                     <li className="list-group-item">
-                        <a to="../page/page-list.html">Blogger</a>
-                        <a className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></a>
+                        <Link to="../page/page-list.html">Blogging App</Link>
+                        <Link className="float-right" to="website-edit.html"><i className="fas fa-cog"></i></Link>
                     </li>
                     <li className="list-group-item">
-                        <a to="../page/page-list.html">Blogging App</a>
-                        <a className="float-right" to="website-edit.html"><i className="fas fa-cog"></i></a>
-                    </li>
-                    <li className="list-group-item">
-                        <a to="../page/page-list.html">Script Testing App</a>
+                        <Link to="../page/page-list.html">Script Testing App</Link>
                         <a className="float-right" to="website-edit.html"><i className="fas fa-cog"></i></a>
                     </li>
                     
@@ -55,7 +86,7 @@ export default class WebsiteEdit extends Component {
                             id="description" name="description"></textarea>
                     </div>
                     <div>
-                        <Link className="btn btn-danger btn-block" to="/user/:uid/website">Delete</Link>
+                        <button className="btn btn-danger btn-block" to="/user/:uid/website">Delete</button>
                     </div>
                 </form>
 
@@ -65,9 +96,10 @@ export default class WebsiteEdit extends Component {
     </section>
     <nav className="navbar navbar-dark bg-primary fixed-bottom">
         <span className="navbar-brand mb-0 h1"></span>
-        <Link to="/user/:uid/website/:wid"><i className="fas fa-users"></i></Link> </nav>
+        <button to="/user/:uid/website/:wid"><i className="fas fa-users"></i></button> </nav>
 
       </div>
     )
   }
 }
+

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+
+import uuid from "uuid";
 
  export default class Register extends Component {
 
@@ -32,7 +33,7 @@ import {Link} from "react-router-dom";
          }
      }
      const newUser = {
-         _id: (parseInt(this.props.users[this.props.users.length -1]._id) + 1).toString(),
+         _id: uuid(),
          username,
          password,
          email: "",
@@ -57,7 +58,8 @@ import {Link} from "react-router-dom";
                   type="text"
                    name="username"
                     id="username"
-                     onChange={this.onChange}/>
+                     onChange={this.onChange}
+                     value={username}/>
             </div>
             <div className="form-group">
                 <label  htmlFor="password">Passwod</label>
@@ -66,7 +68,8 @@ import {Link} from "react-router-dom";
                   className="form-control"
                    id="passwod"
                     name="password"
-                    value ={password} />
+                    value ={password}
+                    onChange={this.onChange} />
             </div>
             <div className="form-group">
                 <label  htmlFor="verify password"> Verify Passwod</label>
@@ -75,7 +78,8 @@ import {Link} from "react-router-dom";
                   className="form-control"
                    id="passwod2"
                     name="password2"
-                    value ={password2}/>
+                    value ={password2}
+                    onChange={this.onChange}/>
             </div>
             <button className="btn btn-warning btn-block" href="/user/123">Register</button>
             <button className = "btn btn-success btn-block" href="/login">Cancel</button>

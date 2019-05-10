@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import {Link} from "react-router-dom"
+import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 
 export default class WidgetList extends Component {
     render() {
         return (
             <div>
                 <nav className="nav-bar fixed-top navbar-light bg-light">
-                    <a to="/user/:uid/website/:wid/page"><i className="fas fa-chevron-left"></i></a>
+                    <Link to="/user/:uid/website/:wid/page"><i className="fas fa-chevron-left"></i></Link>
 
                     <span className="navbar-brand mb-0 h1">Widgets</span>
                     <button to="/user/:uid/website/:wid/page/:pid/widget/new"><i className="fas fa-plus-square float-right"></i></button>

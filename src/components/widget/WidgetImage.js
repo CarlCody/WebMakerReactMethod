@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-
+import {Link} from "react-router-dom";
 export default class WidgetImage extends Component {
     render() {
         return (
             <div>
             <nav class="navbar navbar-light bg-light fixed-top">
-                <a to="widget-list.html"><i class="fas fa-chevron-left"></i></a>
+                <Link to="widget-list.html"><i class="fas fa-chevron-left"></i></Link>
                 <span class="navbar-brand mb0 h1">Widget Edit</span>
-                <a to="widget-list.html"><i class="fas fa-check"></i></a>
+                <Link to="widget-list.html"><i class="fas fa-check"></i></Link>
             </nav>
             <div class="container">
                 <form onSubmit>
@@ -51,14 +51,14 @@ export default class WidgetImage extends Component {
                         <input class="form-control" type="file" id="file" name="file" />
                     </div>
                     <div>
-                        <a class="btn btn-primary btn-block" to="#">Upload Image</a>
-                        <a class="btn btn-danger btn-block" to="widget-list.html">Delete</a>
+                        <span class="btn btn-primary btn-block" >Upload Image</span>
+                        <button class="btn btn-danger btn-block" type="button">Delete</button>
                     </div>
                 </form>
             </div>
             <nav class="navbar navbar-light bg-light fixed-bottom">
                 <span class="navbar-brand mb-0 h1"></span>
-                <a to="../user/login.html"><i class="fas fa-users"></i></a>
+                <Link to="../user/login.html"><i class="fas fa-users"></i></Link>
             </nav>
             </div>
         )

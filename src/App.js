@@ -85,7 +85,14 @@ class App extends Component {
     { _id: "678", widgee:  "YOUTUBE ", pageId: "321", width: "100%", url: " https://youtu.be/AM 2Ivdi9c4E" }
    ]
   }
-          
+   
+   addWeb = (newWeb) => {
+    const newWebs = this.state.websites;
+    newWebs.push(newWeb);
+    this.setState({
+      websites: newWebs
+    });
+  }
 
 
  render () {
@@ -100,7 +107,7 @@ class App extends Component {
     <Route exact path="/user/:uid" render={props => (<Profile {...props} users={this.state.users}/>)} />
     <Route exact path="/user/:uid/website" render={props => (<WebsiteList {...props} users={this.state.users}/>)} />
  
-  <Route exact path="/user/:uid/website/new" render={props => (<WebsiteNew {...props} users={this.state.users}/>)} />
+  <Route exact path="/user/:uid/website/new" render={props => (<WebsiteNew {...props} users={this.state.users}/>)}addWeb={this.addWeb} />
     <Route exact path="/user/:uid/website/:wid" render={props => (<WebsiteEdit {...props} users={this.state.users} />)} />>
     <Route exact path="/user/:uid/website/:wid/page" render={props => (<PageList {...props} users={this.state.users}/>)} />
     <Route exact path="/user/:uid/website/:wid/page/new" render={props => (<PageNew {...props} users={this.state.users}/>)} />
