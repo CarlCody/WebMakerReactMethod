@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 export default class WidgetYoutube extends Component {
     render() {
+        const{uid,wid,pid} = this.props
         return (
             <div>
             <nav class="navbar navbar-light bg-light fixed-top">

@@ -9,7 +9,7 @@ export default class WidgetEdit extends Component {
         name: "",
         text: "",
         size: "",
-        WidgetType: "",
+        widgetType: "",
         width: "",
         url: "",
         uid: "",
@@ -35,7 +35,8 @@ export default class WidgetEdit extends Component {
             }
         }
         this.setState({
-            name: currentWidget.name? currentWidget.name : "",
+            name: currentWidget.name?
+             currentWidget.name : "",
             text: currentWidget.text,
             size: currentWidget.size,
             widgetType: currentWidget.widgetType,
@@ -72,7 +73,19 @@ export default class WidgetEdit extends Component {
         const {uid, wid, pid} = this.state;
         this.props.deleteWidget(this.props.match.params.wgid);
         this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget`)
+
+        getWidget = (widget) => {
+            let.currentWidget;
+            for(let widget of this);
+        }
+        
+    
     }
+    //    onChange = e => {
+    //        this.setState({
+    //            [e.target.name]: e.target.value
+    //        })
+    //    }
 
     render() {
         const {name, text, size, width, widgetType, url , uid, wid, pid} = this.state;
@@ -90,7 +103,7 @@ export default class WidgetEdit extends Component {
                     onDelete={this.onDelete}
                 />
             );
-        } else if(widgetType==="IMAGE"){
+        } else if(widgetType ==="IMAGE"){
             return (
                 <WidgetImage 
                     name={name}

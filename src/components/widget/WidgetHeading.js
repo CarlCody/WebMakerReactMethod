@@ -1,38 +1,63 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
 export default class WidgetHeader extends Component {
+
+    onChange= e => {
+       this.props.onChange(e);
+    }
+
+    onSubmit= e => {
+    this.props.onChange(e);
+    }
+
     render() {
+        const{uid,wid,pid} = this.props
         return (
             <div>
-            <nav class="navbar navbar-light bg-light fixed-top">
-            <a href="widget-list.html"><i class="fas fa-chevron-left"></i></a>
-            <span class="navbar-brand mb0 h1">Widget Edit</span>
-            <a href="widget-list.html"><i class="fas fa-check"></i></a>
+            <nav className="navbar navbar-light bg-light fixed-top">
+            <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}><i className="fas fa-chevron-left"></i></Link>
+            <span className="navbar-brand mb0 h1">Widget Edit</span>
+            <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}><i className="fas fa-check"></i></Link>
         </nav>
-        <div class="container">
-            <form>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input placeholder="Enter a name for this widget...." name="name" type="text" class="form-control"/>
+        <div className="container">
+            <form id="headingForm" onSubmit={this.onSubmit}>
+                <div className="form-group">
+                    <label htmlfor="name">Name</label>
+                    <input placeholder="Enter a name for this widget...."
+                     name="name"
+                      type="text"
+                       className="form-control"
+                       onChange ={this.onChange}
+                        value={name}/>
                 </div>
-                <div class="form-group">
-                    <label for="text">Text</label>
-                    <input placeholder="Enter a text a description for image(optional)..." name="name" type="text"
-                        class="form-control"/>
+                <div className="form-group">
+                    <label htmlfor="text">Text</label>
+                    <input placeholder="Enter a text a description for image(optional)..."
+                     name="text"
+                      type="text"
+                        className="form-control"
+                        onChange ={this.onChange}
+                        value={text}/>
                 </div>
-                <div class="form-group">
-                    <label for="url">Size</label>
-                    <input placeholder="#" id="url" name="name" type="text"
-                        class="form-control"/>
+                <div className="form-group">
+                    <label htmlfor="url">Size</label>
+                    <input placeholder="#"
+                     id="size"
+                      name="size"
+                       type="number"
+                        className="form-control"
+                        onChange ={this.onChange}
+                        value={size}/>
                 </div>
                 <div>
-                    <a class="btn btn-danger btn-block" href="widget-list.html">Delete</a>
+                    <Link className="btn btn-danger btn-block" to={`/user/${uid}/website/${wid}/page/${pid}/widget`}>Delete</Link>
                 </div>
             </form>
         </div>
-        <nav class="navbar navbar-light bg-light fixed-bottom">
-            <span class="navbar-brand mb-0 h1"></span>
-            <a href="../user/login.html"><i class="fas fa-users"></i></a> 
+        <nav className="navbar navbar-light bg-light fixed-bottom">
+            <span className="navbar-brand mb-0 h1"></span>
+            <Link to={`/user/${uid}`}><i className="fas fa-users"></i></Link> 
             </nav>
             </div>
         )

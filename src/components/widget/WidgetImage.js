@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {Link} from "react-router-dom";
 export default class WidgetImage extends Component {
     render() {
+        const{uid,wid,pid} = this.props
         return (
             <div>
             <nav class="navbar navbar-light bg-light fixed-top">
