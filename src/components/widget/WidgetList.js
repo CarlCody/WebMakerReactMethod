@@ -2,17 +2,51 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 
 export default class WidgetList extends Component {
+
+   state= {
+   uid: "",
+   wid: "",
+   pid: "",
+   widgets: []
+   }
+
+   
+    async componentDidMount() {
+    await this.setState({
+       uid: this.props.match.params.uid, 
+       wid: this.props.match.params.wid,
+       pid: this.props.match.params.pid
+    })
+    filterWidgets = () => {
+      const widgets = this.props.widgets.filter(
+          (widget) => (
+              widget.pageId === pid
+          )
+      )
+      this.setState({
+          widgets: widgets
+      })
+    }
+
+    // this.filterPage(this.state.pid);
+}
+
     render() {
+        const {uid,wid,pid} = this.state
         return (
             <div>
                 <nav className="nav-bar fixed-top navbar-light bg-light">
                     <Link to="/user/:uid/website/:wid/page"><i className="fas fa-chevron-left"></i></Link>
 
                     <span className="navbar-brand mb-0 h1">Widgets</span>
-                    <button to="/user/:uid/website/:wid/page/:pid/widget/new"><i className="fas fa-plus-square float-right"></i></button>
+                    <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/new`}><i className="fas fa-plus-square float-right"></i></Link>
                 </nav>
                 <div className="container-fluid">
-                    <div>
+                  {
+
+                  }
+
+                    {/* <div>
                         <div className="float-right">
                             <a to="widget-heading.js"><i className="fas fa-cog"></i></a>
                             <i className="fas fa-bars"></i>
@@ -71,14 +105,14 @@ export default class WidgetList extends Component {
                                     opionins of the subject of subliminal racist messages being hidden in or movies anhd children
                     cartoons. Please also subscibe to my youtube channel and remember to stay positive.</p>
                             </div>
-                        </div>
+                        </div> */}
                         <nav className="navbar navbar-light bg-light fixed-bottom">
                             <div>
                                 <i className="fas fa-play"></i>
                                 <i className="fas fa-eye"></i>
                             </div>
                             <span className="navbar-brand mb-0 h1"></span>
-                            <a to="../user/login.html"><i className="fas fa-users"></i></a>
+                            <Link to={`/user/${uid}`}><i className="fas fa-users"></i></Link>
                         </nav>
                     </div>
                     </div>
