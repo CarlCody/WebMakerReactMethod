@@ -2,14 +2,44 @@ import React from "react";
 import {Link} from "react-router-dom"
 
 export default class PageList extends React.Component {
+
+state = {
+    uid: "",
+    wid: "",
+    pages: []
+}
+
+async componentDidMount() {
+    await this.setState({
+       uid: this.props.match.params.uid, 
+       wid: this.props.match.params.wid
+    })
+    this.filterPage(this.state.wid);
+}
+
+filterPage = (wid) => {
+    const currentPages = this.props.pages.filter(
+      (page) => (
+          page.websiteId === wid
+    )
+     )
+     this.setState({
+         pages: currentPages
+     })
+}
+
+
+
+
     render() {
+        const {uid,wid} = this.state;
         return (
 <div>
     <nav className="navbar navbar-light bg-light fixed-top mb-0 h1">
 
-        <a href="../website/website-list.html"><i className="fas fa-chevron-left"></i></a>
+        <Link to={`/user/${uid}/website`}><i className="fas fa-chevron-left"></i></Link>
         <span className="navbar-brand mb-0 h1">Pages</span>
-        <a href="page-new.html"><i className="fas fa-plus-square"></i></a>
+        <Link to={`/user/${uid}/website/wid/page/new`}><i className="fas fa-plus-square"></i></Link>
 
 
     </nav>
@@ -17,33 +47,28 @@ export default class PageList extends React.Component {
         <div>
             <div className="container">
                 <ul className="list-group">
-                    <li className="list-group-item">
+                {
+                    this.state.pages.map(
+                       (page) => {
+                           <li key={page._id} className="list-group-item">
+                            <Link to={`/user/${uid}/website/${wid}/page/${page.id}/widget`}>{page.name}</Link>
+                            <Link className="fas-fa-cog" to={`/user/${uid}/website/${wid}/page/${page.id}`}></Link>
+                           </li>
+                       } 
+                    )
+                }
+                    {/* <li className="list-group-item">
                         <a href="../widget/widget-list.html">Blog post</a>
                         <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
-                    </li>
-                    <li className="list-group-item">
-                        <a href="../widget/widget-list.html">Blogs</a>
-                        <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
-                    </li>
-                    <li className="list-group-item">
-                        <a href="../widget/widget-list.html">Home</a>
-                        <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
-                    </li>
-                    <li className="list-group-item">
-                        <a href="../widget/widget-list.html">About</a>
-                        <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
-                    </li>
-                    <li className="list-group-item">
-                        <a href="../widget/widget-list.html">Contact Us</a>
-                        <a className="float-right" href="website-edit.html"><i className="fas fa-cog"></i></a>
-                    </li>
+                    </li> */}
+                    
                 </ul>
             </div>
 
         </div>
         <nav className="navbar navbar-light bg-light fixed-bottom">
             <span className="navbar-brand mb-0 h1"></span>
-            <a href="../user/profile.js"><i className="fas fa-users"></i></a> </nav>
+            <Link to={`/user/${uid}`}><i className="fas fa-users"></i></Link> </nav>
 
 
     </section>
