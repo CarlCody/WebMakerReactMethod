@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+
 export default class PageEdit extends React.Component {
 
     state = {
@@ -51,12 +52,11 @@ export default class PageEdit extends React.Component {
         e.preventDefault();
         const newPage = {
             _id: this.state.pid,
-            _id: uuid(),
             name:this.state.name,
             websiteId: this.state.wid,
             title: this.state.title
         }
-        this.props.addPage(newpage);
+        this.props.addPage(newPage);
         this.props.history.push(`user/${this.state.uid}/website/${this.state.wid}/page`)
     }
 

@@ -49,12 +49,12 @@ filterPage = (wid) => {
                 <ul className="list-group">
                 {
                     this.state.pages.map(
-                       (page) => {
+                       (page) => (
                            <li key={page._id} className="list-group-item">
                             <Link to={`/user/${uid}/website/${wid}/page/${page.id}/widget`}>{page.name}</Link>
                             <Link className="fas-fa-cog" to={`/user/${uid}/website/${wid}/page/${page.id}`}></Link>
                            </li>
-                       } 
+                    )
                     )
                 }
                     {/* <li className="list-group-item">

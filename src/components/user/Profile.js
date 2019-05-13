@@ -99,8 +99,8 @@ export default class Profile extends Component {
                             value={this.lastName}
                             onChange ={this.onChange} /> </div>
                 </div>
-                <a className="btn btn-primary btn-block" to={`/user/${this.props.match.params.uid}/website`}>Websites</a>
-                <Link to="/Login" className="btn btn-primary btn-block btn-danger" to="/login,/">LogOut</Link>
+                <Link className="btn btn-primary btn-block" to={`/user/${this.props.match.params.uid}/website`}>Websites</Link>
+                <Link to="/Login" className="btn btn-primary btn-block btn-danger" to="/login">LogOut</Link>
             </div>
             <footer>
                     <nav className="navbar navbar-dark bg-primary fixed-bottom">

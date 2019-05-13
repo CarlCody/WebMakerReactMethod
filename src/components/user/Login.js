@@ -26,8 +26,8 @@ export default class Login extends React.Component {
                             name="password"
                             onChange={this.onChange} />
                     </div>
-                    <button className="btn btn-success btn-block" to="/user/uid">Login</button>
-                    <button className="btn btn-primary btn-block" to="/register">Register</button>
+                    <button className="btn btn-success btn-block">Login</button>
+                    <Link className="btn btn-primary btn-block" to="/register">Register</Link>
                 </form>
             </div>
         )

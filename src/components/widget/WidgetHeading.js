@@ -12,11 +12,11 @@ export default class WidgetHeader extends Component {
     }
 
     render() {
-        const{uid,wid,pid} = this.props
+        const{name,text,size,uid,wid,pid} = this.props
         return (
             <div>
             <nav className="navbar navbar-light bg-light fixed-top">
-            <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}><i className="fas fa-chevron-left"></i></Link>
+            <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/`}><i className="fas fa-chevron-left"></i></Link>
             <span className="navbar-brand mb0 h1">Widget Edit</span>
             <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}><i className="fas fa-check"></i></Link>
         </nav>
