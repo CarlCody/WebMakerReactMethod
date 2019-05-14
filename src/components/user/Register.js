@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import uuid from "uuid";
 
- export default class Register extends Component {
+ export default class Register extends React.Component {
 
     state = {
         username: "",
@@ -62,27 +62,27 @@ import uuid from "uuid";
                      value={username}/>
             </div>
             <div className="form-group">
-                <label  htmlFor="password">Passwod</label>
+                <label  htmlFor="password">Password</label>
                 <input placeholder="Enter your password"
                  type="password"
                   className="form-control"
-                   id="passwod"
+                   id="password"
                     name="password"
                     value ={password}
                     onChange={this.onChange} />
             </div>
             <div className="form-group">
-                <label  htmlFor="verify password"> Verify Passwod</label>
+                <label  htmlFor="verify password"> Verify Password</label>
                 <input placeholder="Please verify your password"
-                 type="password2"
+                 type="password"
                   className="form-control"
-                   id="passwod2"
+                   id="password2"
                     name="password2"
                     value ={password2}
                     onChange={this.onChange}/>
             </div>
-            <button className="btn btn-warning btn-block" href="/user/123">Register</button>
-            <button className = "btn btn-success btn-block" href="/login">Cancel</button>
+            <button className="btn btn-warning btn-block">Register</button>
+            <Link className = "btn btn-success btn-block" to="/login">Cancel</Link>
         </form>
     </div>
         )

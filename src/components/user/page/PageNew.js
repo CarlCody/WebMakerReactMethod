@@ -8,7 +8,7 @@ export default class PageNew extends React.Component {
         uid: "",
         wid: "",
         name:"",
-        title: ""
+        title: "",
     } 
 
      componentDidMount() {
@@ -16,7 +16,7 @@ export default class PageNew extends React.Component {
            uid: this.props.match.params.uid, 
            wid: this.props.match.params.wid
         })
-        this.filterPage(this.state.wid);
+        // this.filterPage(this.state.wid);
     }
 
     onChange = e => {
@@ -44,9 +44,9 @@ export default class PageNew extends React.Component {
 
             <div>
                 <nav className="navbar navbar-light bg-light fixed-top">
-                    <Link to={`/user${uid}/website${wid}/page`}><i className="fas fa-chevron-left"></i></Link>
+                    <Link to={`/user/${uid}/website/${wid}/page`}><i className="fas fa-chevron-left"></i></Link>
                     <span className="navbar-brand float-left mb-0 h1">New Page</span>
-                    <button><i className="fas fa-check"></i></button>
+                    <button form="newPageForm"><i className="fas fa-check"></i></button>
                 </nav>
                 <form id="newPageForm" onSubmit={this.onSubmit}>
                     <div className="form-group">
@@ -63,7 +63,7 @@ export default class PageNew extends React.Component {
                         <div className="form-group">
                             <label htmlFor="Email">Title</label>
                             <input placeholder="Enter Page Title"
-                             type="Email"
+                             type="text"
                               className="form-control"
                               id="title"
                                name="title"
@@ -71,6 +71,14 @@ export default class PageNew extends React.Component {
                                value={title} />
                         </div>
                     </div>
+                    <Link to={`/user/${uid}/website/${wid}/page`} className="btn btn-lg btn-warning">
+                            Cancel
+                        </Link>
+                        <button
+                            className="btn btn-lg btn-success float-right"
+                        >
+                            Submit
+                        </button>
                     <footer>
                         <nav className="navbar navbar-light bg-light fixed-bottom">
                             <span className="navbar-brand mb-0 h1"></span>

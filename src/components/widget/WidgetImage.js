@@ -29,13 +29,14 @@ export default class WidgetImage extends Component {
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input placeholder="Enter a name for this widget...."
+                        id="name"
                          name="name"
                           type="text"
                            className="form-control"
                            onChange ={this.onChange}
                            value={name}/>
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label htmlFor="text">Text</label>
                         <input placeholder="Enter a text a description for image(optional)..."
                          name="name"
@@ -43,7 +44,7 @@ export default class WidgetImage extends Component {
                             className="form-control"
                             onChange ={this.onChange}
                             value={text}  />
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <label htmlFor="url">URL</label>
                         <input placeholder="Enter the location of the image...."
@@ -69,7 +70,7 @@ export default class WidgetImage extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label htmlFor="width">Width</label>
                         <div className="input-group">
                             <input type="range" min="0" max="100" className="form-control" placeholder="Image Width" />
@@ -77,14 +78,19 @@ export default class WidgetImage extends Component {
                                 <span className="input-group-text">%</span>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div>
 
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label htmlFor="File">file</label>
-                        <input className="form-control" type="file" id="file" name="file" />
-                    </div>
+                        <input className="form-control"
+                         type="text"
+                          id="file"
+                           name="file"
+                           onChange ={this.onChange}
+                       value={file}   />
+                    </div> */}
                     <div>
                         <span className="btn btn-primary btn-block" >Upload Image</span>
                         <button className="btn btn-danger btn-block" type="button" onClick={this.onDelete}>Delete</button>

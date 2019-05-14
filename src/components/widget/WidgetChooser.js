@@ -18,7 +18,7 @@ export default class WidgetChooser extends Component {
 
       }
       this.prop.addWidget(newWidget);
-      this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget${newwidget._id}`)
+      this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget${newWidget._id}`)
        }
 
     render() {

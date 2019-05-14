@@ -33,7 +33,7 @@ export default class WebsiteNew extends Component {
         })
     }
     onSubmit = async e => {
-        const {name, description, uid} = This.state;
+        const {name, description, uid} = this.state;
         e.preventDefault()
         const newWeb = {
             _id: uuid(), name: name, developerId: uid, description: description
@@ -43,13 +43,14 @@ export default class WebsiteNew extends Component {
     }
 
     render() {
+        const { uid } = this.state;
         return (
             <div>
                 <nav className="navbar navbar-dark bg-primary fixed-top row">
                     <div className="col-4 d-none d-lg-block">
-                        <Link to={`/user/${uid}/website`}><i className="fas fa-chevron-left"></i></Link>
+                        <Link to="/user/:uid/website"><i className="fas fa-chevron-left"></i></Link>
                         <span className="navbar-brand fixed-left mb-0 h1">Websites</span>
-                        <Link className="float-right pt-2" to={`/user/${uid}/website`}><i className="fas fa-plus-square"></i></Link>
+                        <Link className="float-right pt-2" to="/user/:uid/website"><i className="fas fa-plus-square"></i></Link>
                     </div>
                     <div className="col-8">
                         <a className="d-lg-none" to="website-list.html"><i className="fas fa-chevron-left"></i></a>
@@ -63,7 +64,7 @@ export default class WebsiteNew extends Component {
                             <ul className="list-group">
                                 {this.state.websites.map(
                                     (website) => (
-                                            <li  ker={website_id}className="list-group-item">
+                                            <li key={website._id}className="list-group-item">
                                                 <Link to="/user/:uid/website/:wid/page">Blogging App</Link>
                                                 <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
                                             </li>
@@ -96,6 +97,15 @@ export default class WebsiteNew extends Component {
                                         onChange={this.onChange}
                                         value={this.state.description}></textarea>
                                 </div>
+                                <Link
+                                    to={`/user/${uid}/website`}
+                                    className="btn btn-lg btn-warning"
+                                >
+                                    Cancel
+                                </Link>
+                                <button className="btn btn-lg btn-success float-right">
+                                    Submit
+                                </button>
                             </form>
                         </div>
                     </div>

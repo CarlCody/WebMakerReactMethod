@@ -48,16 +48,18 @@ export default class Login extends React.Component {
                           type="text"
                            name="username"
                             id="username"
-                            onChange={this.onChange} />
+                            onChange={this.onChange}
+                            value={this.state.username} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Passwod</label>
+                        <label htmlFor="password">Password</label>
                         <input placeholder="Enter your password"
-                         type="password"
+                         type="text"
                           className="form-control"
-                           id="passwod"
+                           id="password"
                             name="password"
-                            onChange={this.onChange} />
+                            onChange={this.onChange}
+                            value={this.state.password}/>
                     </div>
                     <button className="btn btn-success btn-block">Login</button>
                     <Link className="btn btn-primary btn-block" to="/register">Register</Link>

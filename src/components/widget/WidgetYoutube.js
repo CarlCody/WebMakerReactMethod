@@ -37,7 +37,7 @@ export default class WidgetYoutube extends Component {
                        value={name} 
                        id="name"/>
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label htmlFor="text">Text</label>
                     <input placeholder="Enter text here..."
                      name="name"
@@ -45,7 +45,7 @@ export default class WidgetYoutube extends Component {
                       className="form-control
                       " id="text" onChange ={this.onChange}
                       value={text}/>
-                </div>
+                </div> */}
                 <div className="form-group">
                     <label htmlFor="url">URL</label>
                     <input placeholder="Enter the url...."

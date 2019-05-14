@@ -7,8 +7,8 @@ export default class WebsiteList extends React.Component {
         websites:[]
 }
 
-async componentDidMount(){
-await this.filterWebsites(this.props.websites);
+  async componentDidMount(){
+ await  this.filterWebsites(this.props.websites);
 }
 
 filterWebsites = (websites) => {

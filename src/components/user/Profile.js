@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
 
-export default class Profile extends Component {
+export default class Profile extends React.Component {
     state = {
         username: "",
         email: "",
@@ -71,10 +71,10 @@ export default class Profile extends Component {
                 <div className="form-group">
                     <label htmlFor="Email">Email</label>
                     <input placeholder="Enter your Email"
-                     type="Email"
+                     type="text"
                       className="form-control"
-                       id="passwod"
-                        name="password"
+                       id="email"
+                        name="email"
                         value={email}
                         onChange ={this.onChange}/>
                 </div>
@@ -84,18 +84,18 @@ export default class Profile extends Component {
                         <input placeholder="Enter your FirstName"
                          className="form-control"
                           type="text"
-                           name="username"
-                            id="username"
+                           name="firstName"
+                            id="firstName"
                             value={firstName}
                             onChange ={this.onChange}/>
                     </div>
                     <div>
                         <label htmlFor="LastName">LastName</label>
                         <input placeholder="Enter your LastName"
-                         type="Email"
+                         type="text"
                           className="form-control"
-                           id="password"
-                            name="password"
+                           id="lastName"
+                            name="lastName"
                             value={this.lastName}
                             onChange ={this.onChange} /> </div>
                 </div>

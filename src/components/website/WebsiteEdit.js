@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
-import uuid from "uuid";
+// import uuid from "uuid";
 
-export default class WebsiteEdit extends Component {
+export default class WebsiteEdit extends React.Component {
     state={
         uid: this.props.match.params.uid,
         websites: [],
         name: "",
-        description: "",
+        description: ""
     }
     async componentDidMount(){
         await this.filterWebsites(this.props.websites);
