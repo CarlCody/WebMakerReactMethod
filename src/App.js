@@ -16,8 +16,9 @@ import PageEdit from "./components/user/page/PageEdit";
 // Widgets
 import WidgetList from "./components/widget/WidgetList";
 import WidgetChooser from "./components/widget/WidgetChooser";
-import WidgetEdit from "./components/widget/WidgetEdit.js";
+import WidgetEdit from "./components/widget/WidgetEdit.";
 import WidgetYoutube from "./components/widget/WidgetYoutube";
+import WidgetImage from ""
 
 // import WebsiteNew from "./components/website/WebsiteNew";
 class App extends Component {
@@ -140,6 +141,43 @@ class App extends Component {
   }
 
 
+  addWidget = newWidget => {
+    const newWidgets = this.state.widgets;
+    newWidgets.push(newPage);
+    this.setState({
+      widgets: newWidgets
+    })
+  }
+
+  deleteWidget = (wgid)=>{
+    const newWidgets = this.state.widgets.filter(
+      (widget) => (
+        widget._id !== wgid
+    )
+    )
+    this.setState({
+      widgets: newWidgets
+    })
+  }
+  }
+
+
+  editWidget = newWidget => {
+        
+    const newWidgets = this.state.widgets.map(
+            (widget) => {
+         if(widget._id === newWidget._id) {
+             widget = newWidget
+                 }
+    return widget;
+               }
+            )
+           this.setState({
+               widgets: newWidgets
+           })
+         }
+
+
  render () {
    
   return (
@@ -161,6 +199,7 @@ class App extends Component {
     <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" render={props => (<WidgetChooser {...props} addWidget={this.addWidget}/>)} />
     <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={props => (<WidgetEdit {...props} widgets={this.state.widgets} editWidget={this.editWidget} deleteWidget={this.deleteWidget}/>)} />
     <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={props => (<WidgetYoutube {...props} widgets={this.state.widgets}/>)} />
+
     </Switch>
   </Router>
   )

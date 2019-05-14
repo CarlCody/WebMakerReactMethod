@@ -1,65 +1,99 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
+
 export default class WidgetImage extends Component {
+
+    onChange= e => {
+        this.props.onChange(e);
+     }
+ 
+     onSubmit= e => {
+     this.props.onSubmit(e);
+     }
+
+     onDelete = () => {
+         this.props.onDelete();
+     }
+
     render() {
-        const{uid,wid,pid} = this.props
+        const{uid,wid,pid,name,width,url} = this.props
         return (
             <div>
-            <nav class="navbar navbar-light bg-light fixed-top">
-                <Link to="widget-list.html"><i class="fas fa-chevron-left"></i></Link>
-                <span class="navbar-brand mb0 h1">Widget Edit</span>
-                <Link to="widget-list.html"><i class="fas fa-check"></i></Link>
+            <nav className="navbar navbar-light bg-light fixed-top">
+                <Link to="widget-list.html"><i className="fas fa-chevron-left"></i></Link>
+                <span className="navbar-brand mb0 h1">Widget Edit</span>
+                <button className="btn" form="ImgForm"><i className="fas fa-check"></i></button>
             </nav>
-            <div class="container">
-                <form onSubmit>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input placeholder="Enter a name for this widget...." name="name" type="text" class="form-control" />
+            <div className="container">
+                <form id="ImgForm" onSubmit={this.onSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input placeholder="Enter a name for this widget...."
+                         name="name"
+                          type="text"
+                           className="form-control"
+                           onChange ={this.onChange}
+                           value={name}/>
                     </div>
-                    <div class="form-group">
-                        <label for="text">Text</label>
-                        <input placeholder="Enter a text a description for image(optional)..." name="name" type="text"
-                            class="form-control" />
+                    <div className="form-group">
+                        <label htmlFor="text">Text</label>
+                        <input placeholder="Enter a text a description for image(optional)..."
+                         name="name"
+                          type="text"
+                            className="form-control"
+                            onChange ={this.onChange}
+                            value={text}  />
                     </div>
-                    <div class="form-group">
-                        <label for="url">URL</label>
-                        <input placeholder="Enter the location of the image...." id="url" name="name" type="text"
-                            class="form-control" />
+                    <div className="form-group">
+                        <label htmlFor="url">URL</label>
+                        <input placeholder="Enter the location of the image...."
+                         id="url"
+                          name="url"
+                           type="text"
+                            className="form-control"
+                            onChange ={this.onChange}
+                             value={url} />
                     </div>
-                    <div class="form-group">
-                        <label for="width">Width</label>
-                        <div class="input-group">
-                            <input type="number" class="form-control" placeholder="Image Width" />
-                            <div class="input-group-append">
-                                <span class="input-group-text">#</span>
+                    <div className="form-group">
+                        <label htmlFor="width">Width</label>
+                        <div className="input-group">
+                            <input type="number"
+                             className="form-control" 
+                             placeholder="Image Width"
+                             onChange ={this.onChange}
+                             value={width} 
+                             name="width" />
+
+                            <div className="input-group-append">
+                                <span className="input-group-text">#</span>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="width">Width</label>
-                        <div class="input-group">
-                            <input type="range" min="0" max="100" class="form-control" placeholder="Image Width" />
-                            <div class="input-group-append">
-                                <span class="input-group-text">%</span>
+                    <div className="form-group">
+                        <label htmlFor="width">Width</label>
+                        <div className="input-group">
+                            <input type="range" min="0" max="100" className="form-control" placeholder="Image Width" />
+                            <div className="input-group-append">
+                                <span className="input-group-text">%</span>
                             </div>
                         </div>
                     </div>
                     <div>
 
                     </div>
-                    <div class="form-group">
-                        <label for="File">file</label>
-                        <input class="form-control" type="file" id="file" name="file" />
+                    <div className="form-group">
+                        <label htmlFor="File">file</label>
+                        <input className="form-control" type="file" id="file" name="file" />
                     </div>
                     <div>
-                        <span class="btn btn-primary btn-block" >Upload Image</span>
-                        <button class="btn btn-danger btn-block" type="button">Delete</button>
+                        <span className="btn btn-primary btn-block" >Upload Image</span>
+                        <button className="btn btn-danger btn-block" type="button" onClick={this.onDelete}>Delete</button>
                     </div>
                 </form>
             </div>
-            <nav class="navbar navbar-light bg-light fixed-bottom">
-                <span class="navbar-brand mb-0 h1"></span>
-                <Link to="../user/login.html"><i class="fas fa-users"></i></Link>
+            <nav className="navbar navbar-light bg-light fixed-bottom">
+                <span className="navbar-brand mb-0 h1"></span>
+                <Link to="../user/login.html"><i className="fas fa-users"></i></Link>
             </nav>
             </div>
         )

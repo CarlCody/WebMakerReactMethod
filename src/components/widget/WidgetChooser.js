@@ -1,53 +1,74 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
+import uuid from "uuid";
 
 export default class WidgetChooser extends Component {
+
+       createWidget = type => {
+        const {uid,wid,pid} = this.props.match.params
+      const newWidget ={
+          name: "",
+          _id: uuid(),
+          widgetType: type,
+          pageId: pid,
+          text: "",
+          size: 1,
+          width: "",
+          url: ""
+
+      }
+      this.prop.addWidget(newWidget);
+      this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget${newwidget._id}`)
+       }
+
     render() {
+        const {uid,wid,pid} = this.props.match.params
         return (
             <div>
-                <nav class="navbar navbar-light bg-light fixed-top">
-                    <a href="widget-list.html"><i class="fa fa-chevron-left"></i></a>
-                    <span class="navbar-brand mb-0 h1">Choose Widget</span>
+                <nav className="navbar navbar-light bg-light fixed-top">
+                    <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}></Link><i className="fa fa-chevron-left"></i>
+                    <span className="navbar-brand mb-0 h1">Choose Widget</span>
                     <span></span>
                 </nav>
-                <div class="container">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <a href="widget-heading.html">Header</a>
+                <div className="container">
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item">
+                            <span onClick={this.createWidget.bind(this,"HEADING")}>Heading</span>
                         </li>
-                        <li class="list-group-item">
+                        <li className="list-group-item">
                             <a href="#">Label</a>
                         </li>
-                        <li class="list-group-item">
+                        <li className="list-group-item">
                             <a href="#">HTML</a>
                         </li>
-                        <li class="list-group-item">
+                        <li className="list-group-item">
                             <a href="#">Text Input</a>
                         </li>
-                        <li class="list-group-item">
+                        <li className="list-group-item">
                             <a href="#">Link</a>
                         </li>
-                        <li class="list-group-item">
+                        <li className="list-group-item">
                             <a href="#">Button</a>
                         </li>
-                        <li class="list-group-item">
-                            <a href="widget-image.html">Image</a>
+                        <li className="list-group-item">
+                            <span onClick={this.createWidget.bind(this,"IMAGE")}>Image</span>
                         </li>
-                        <li class="list-group-item">
-                            <a href="widget-youtube.html">Youtube</a>
+                        <li className="list-group-item">
+                            <span onClick={this.createWidget.bind(this,"YOUTUBE")}>Youtube</span>
                         </li>
-                        <li class="list-group-item">
+                        <li className="list-group-item">
                             <a href="#">Data Table</a>
                         </li>
-                        <li class="list-group-item">
+                        <li className="list-group-item">
                             <a href="#">Repeater</a>
                         </li>
 
                     </ul>
 
                 </div>
-                <nav class="navbar navbar-light bg-light fixed-bottom">
-                    <span class="navbar-brand mb-0 h1"></span>
-                    <a href="../user/login.html"><i class="fas fa-users"></i></a> </nav>
+                <nav className="navbar navbar-light bg-light fixed-bottom">
+                    <span className="navbar-brand mb-0 h1"></span>
+                    <a href="../user/login.html"><i className="fas fa-users"></i></a> </nav>
             </div>
         )
     }

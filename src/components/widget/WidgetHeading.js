@@ -11,6 +11,10 @@ export default class WidgetHeader extends Component {
     this.props.onChange(e);
     }
 
+    onDelete = () => {
+        this.props.onDelete(); 
+    }
+
     render() {
         const{name,text,size,uid,wid,pid} = this.props
         return (
@@ -51,7 +55,7 @@ export default class WidgetHeader extends Component {
                         value={size}/>
                 </div>
                 <div>
-                    <Link className="btn btn-danger btn-block" to={`/user/${uid}/website/${wid}/page/${pid}/widget`}>Delete</Link>
+                    <button className="btn btn-danger btn-block" type="button" onClick={this.onDelete}>Delete</button>
                 </div>
             </form>
         </div>
