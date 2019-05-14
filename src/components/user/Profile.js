@@ -17,7 +17,7 @@ export default class Profile extends React.Component {
         let currentUser;
         for (let user of this.props.users) {
           if(user._id === uid) {
-              currentUser = user;
+            //   currentUser = user;
               this.showUser(user)
               return;
           }
