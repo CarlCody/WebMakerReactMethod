@@ -50,43 +50,47 @@ export default class WebsiteEdit extends React.Component {
     </nav>
     <section className="row">
         <div className="col-lg-4 d-none d-lg-block">
-            <div className="container">
-                <ul className="list-group">
-                    <li className="list-group-item">
-                        <Link to="/user/:uid/website">Address Book App</Link>
+            <div className="container-fluid">
+                <ul className="list-group">{this.state.websites.map(website => (
+                    <li key={website._id}
+                    className="list-group-item"> 
+                        <Link to={`/user/${uid}/website/${
+                                                website._id
+                                            }/page`}>Address Book App</Link>
                         <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
                     </li>
-                    <li className="list-group-item">
-                        <Link to="../page/page-list.html">Blogger</Link>
-                        <a className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></a>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="../page/page-list.html">Blogging App</Link>
-                        <Link className="float-right" to="website-edit.html"><i className="fas fa-cog"></i></Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="../page/page-list.html">Script Testing App</Link>
-                        <a className="float-right" to="website-edit.html"><i className="fas fa-cog"></i></a>
-                    </li>
-                    
+                ))}
                 </ul>
+                
             </div>
-
         </div>
         <div className="col-lg-8">
             <div className="container">
-                <form>
+                <form id="editWebForm" onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label htmlfor="">Website Name</label>
-                        <input placeholder="Enter Website Name" className="form-control" type="text" id="name" name="name"/>
+                        <label htmlfor="name">Website Name</label>
+                        <input placeholder="Enter Website Name"
+                         className="form-control"
+                          type="text"
+                           id="name"
+                            name="name"
+                            value={this.state.name}
+                         onChange={this.onChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlfor="description"> Website Description</label>
-                        <textarea rows="5" placeholder="Enter Websites description here...." className="form-control"
-                            id="description" name="description"></textarea>
+                        <textarea rows="5" placeholder="Enter Websites description here...."
+                         className="form-control"
+                         type="text"
+                            id="description"
+                             name="description"
+                             value={this.state.description}
+                             onChange={this.onChange} ></textarea>
                     </div>
                     <div>
-                        <button className="btn btn-danger btn-block" to="/user/:uid/website">Delete</button>
+                        <button type="button"
+                                    onClick={this.delete}
+                                    className="btn btn-lg btn-danger float-right">Delete</button>
                     </div>
                 </form>
 
