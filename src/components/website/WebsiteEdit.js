@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link} from "react-router-dom";
 // import uuid from "uuid";
 
-export default class WebsiteEdit extends React.Component {
+export default class WebsiteEdit extends Component {
     state={
         uid: this.props.match.params.uid,
         websites: [],

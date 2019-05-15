@@ -36,19 +36,19 @@ export default class WidgetChooser extends Component {
                             <span onClick={this.createWidget.bind(this,"HEADING")}>Heading</span>
                         </li>
                         <li className="list-group-item">
-                            <a href="#">Label</a>
+                            <Link to="#">Label</Link>
                         </li>
                         <li className="list-group-item">
-                            <a href="#">HTML</a>
+                            <Link to="#">HTML</Link>
                         </li>
                         <li className="list-group-item">
-                            <a href="#">Text Input</a>
+                            <Link to="#">Text Input</Link>
                         </li>
                         <li className="list-group-item">
-                            <a href="#">Link</a>
+                            <Link to="#">Link</Link>
                         </li>
                         <li className="list-group-item">
-                            <a href="#">Button</a>
+                            <Link to="#">Button</Link>
                         </li>
                         <li className="list-group-item">
                             <span onClick={this.createWidget.bind(this,"IMAGE")}>Image</span>
@@ -57,10 +57,10 @@ export default class WidgetChooser extends Component {
                             <span onClick={this.createWidget.bind(this,"YOUTUBE")}>Youtube</span>
                         </li>
                         <li className="list-group-item">
-                            <a href="#">Data Table</a>
+                            <a to="#">Data Table</a>
                         </li>
                         <li className="list-group-item">
-                            <a href="#">Repeater</a>
+                            <a to="#">Repeater</a>
                         </li>
 
                     </ul>
@@ -68,7 +68,7 @@ export default class WidgetChooser extends Component {
                 </div>
                 <nav className="navbar navbar-light bg-light fixed-bottom">
                     <span className="navbar-brand mb-0 h1"></span>
-                    <a href="../user/login.html"><i className="fas fa-users"></i></a> </nav>
+                    <a to="../user/login.html"><i className="fas fa-users"></i></a> </nav>
             </div>
         )
     }

@@ -7,12 +7,14 @@ export default class Profile extends React.Component {
         username: "",
         email: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        oldUsername: ""
 
     }
 
-    componentDidMount(){
+    async componentDidMount(){
         const uid = this.props.match.params.uid;
+        // const res = await axios.get(`/api/user/${uid}`);
          
         let currentUser;
         for (let user of this.props.users) {
@@ -27,18 +29,18 @@ export default class Profile extends React.Component {
     showUser = (user) => {
         const {username, email,firstName, lastName} = user;
             this.setState({
-           username,email,firstName,lastName
+           username,email,firstName,lastName,oldUsername: username
             })
     }
      
-      onChange = e => {
+      onChange = async e => {
           this.setState({
               [e.target.name]: e.target.value
           })
       }
-      onSubmit = e => {
+      onSubmit = async e => {
         e.preventDefault();
-        const{username, email, firstName, lastName} = this.state;
+        const{username, email, firstName, lastName,password, oldUsername} = this.state;
         const newUser = {
             _id: this.props.match.params.uid,
             username,
@@ -89,7 +91,7 @@ export default class Profile extends React.Component {
                             value={firstName}
                             onChange ={this.onChange}/>
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="LastName">LastName</label>
                         <input placeholder="Enter your LastName"
                          type="text"

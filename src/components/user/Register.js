@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import uuid from "uuid";
 
- export default class Register extends React.Component {
+ export default class Register extends Component {
 
     state = {
         username: "",
