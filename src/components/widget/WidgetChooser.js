@@ -56,12 +56,12 @@ export default class WidgetChooser extends Component {
                         <li className="list-group-item">
                             <span onClick={this.createWidget.bind(this,"YOUTUBE")}>Youtube</span>
                         </li>
-                        <li className="list-group-item">
-                            <a to="#">Data Table</a>
+                        {/* <li className="list-group-item">
+                            <Link to="#">Data Table</Link>
                         </li>
                         <li className="list-group-item">
-                            <a to="#">Repeater</a>
-                        </li>
+                            <Link to="#">Repeater</Link>
+                        </li> */}
 
                     </ul>
 

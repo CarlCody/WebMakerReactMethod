@@ -1,5 +1,7 @@
+//Client side
 import React from "react";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
 
 export default class Login extends React.Component {
@@ -25,14 +27,12 @@ export default class Login extends React.Component {
         this.login(user);
     }
 
-    login = user => {
-        for(let item of this.props.users) {
-            if(item.username === user.username && item.password === user.password) {
-                this.props.history.push("/user/" + item._id);
-                return;
-            }
+    login = async data => {
+        //connecting to user.server.js in (serverside)
+        //Pass in username and password as parameter to serverside.`
+        const data = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
         }
-        alert("Your username and password doesn't match our records");
+        // alert("Your username and password doesn't match our records");
     }
 
 
@@ -68,3 +68,4 @@ export default class Login extends React.Component {
         )
     }
 }
+

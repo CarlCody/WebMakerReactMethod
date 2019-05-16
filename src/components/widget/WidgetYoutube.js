@@ -21,7 +21,7 @@ export default class WidgetYoutube extends Component {
         return (
             <div>
             <nav className="navbar navbar-light bg-light fixed-top">
-            <Link to="widget-list.html"><i className="fas fa-chevron-left"></i></Link>
+            <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}><i className="fas fa-chevron-left"></i></Link>
             <span className="navbar-brand mb0 h1">Widget Edit</span>
             <button type="button" form="youtubeForm" onClick={this.state}><i className="fas fa-check"></i></button>
         </nav>
@@ -88,7 +88,7 @@ export default class WidgetYoutube extends Component {
   
     <nav className="navbar navbar-light bg-light fixed-bottom">
         <span className="navbar-brand mb-0 h1"></span>
-        <Link to="../user/login.html"><i className="fas fa-users"></i></Link> </nav>
+        <Link to={`/user/${uid}`}><i className="fas fa-users"></i></Link> </nav>
      </div>
         )
     }

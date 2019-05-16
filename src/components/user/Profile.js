@@ -2,13 +2,14 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
 
-export default class Profile extends React.Component {
+export default class Profile extends Component {
     state = {
         username: "",
         email: "",
         firstName: "",
         lastName: "",
-        oldUsername: ""
+        oldUsername: "",
+        password: ""
 
     }
 
@@ -19,7 +20,7 @@ export default class Profile extends React.Component {
         let currentUser;
         for (let user of this.props.users) {
           if(user._id === uid) {
-            //   currentUser = user;
+             currentUser = user;
               this.showUser(user)
               return;
           }
@@ -27,9 +28,9 @@ export default class Profile extends React.Component {
         alert("No user is found with given id...");
     }
     showUser = (user) => {
-        const {username, email,firstName, lastName} = user;
+        const {username, email,firstName, lastName,password} = user;
             this.setState({
-           username,email,firstName,lastName,oldUsername: username
+           username,email,firstName,lastName,oldUsername: username,password
             })
     }
      
@@ -46,13 +47,14 @@ export default class Profile extends React.Component {
             username,
             email,
             firstName,
-            lastName
+            lastName,
+            password,
       }
       this.props.updateUser(newUser)
     }
 
     render() {
-        const{username,email,firstName,LastName} = this.state;
+        const{username,email,firstName,lastName,} = this.state;
         return (
             <div>
             <nav className="navbar navbar-dark bg-primary fixed-top">
@@ -92,7 +94,7 @@ export default class Profile extends React.Component {
                             onChange ={this.onChange}/>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="LastName">LastName</label>
+                        <label htmlFor="lastName">LastName</label>
                         <input placeholder="Enter your LastName"
                          type="text"
                           className="form-control"

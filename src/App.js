@@ -57,7 +57,7 @@ class App extends Component {
   }
 
 
-  addUser = (user) => {
+  addUser = user => {
     const newUsers = this.state.users;
     newUsers.push(user);
     this.setState({
