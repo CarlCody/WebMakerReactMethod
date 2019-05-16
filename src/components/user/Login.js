@@ -27,13 +27,17 @@ export default class Login extends React.Component {
         this.login(user);
     }
 
-    login = async data => {
+    login = async user => {
         //connecting to user.server.js in (serverside)
         //Pass in username and password as parameter to serverside.`
-        const data = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
+        const res = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
+        if(res.data){
+            this.props.history.push(`/user/${res.data._id}`)
+        }else {
+            alert("Your username and password doesn't match our records");
         }
-        // alert("Your username and password doesn't match our records");
     }
+        
 
 
     render() {

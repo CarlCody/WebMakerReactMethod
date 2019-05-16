@@ -68,7 +68,7 @@ export default class WidgetChooser extends Component {
                 </div>
                 <nav className="navbar navbar-light bg-light fixed-bottom">
                     <span className="navbar-brand mb-0 h1"></span>
-                    <a to="../user/login.html"><i className="fas fa-users"></i></a> </nav>
+                    <Link to="/login"	><i className="fas fa-users"></i></Link> </nav>
             </div>
         )
     }

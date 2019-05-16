@@ -12,27 +12,33 @@ module.exports = function(app) {
       //to listen in for incoming code
       //create something called a pass
       //API stands for application programming  interface
+      //find user by username and password
        app.get("/api/user", (req, res)=> {
            //2 way to write this
            //paranthesis or square brackets both will work
            const username = req.query["username"];
            const password = req.query["password"];
+           let user;
            //another method below
            /* let user = {}; get rid of else and if and,
            replace with res.json(user)*/
 
-           // check it 
+           // login to check user credentials 
            if(username && password) {
                //Checking if we have this user
                const user = users.find((user)=>{
                    //short way to write for() loop 
                    //Too check if we have username and password
                    // If we do get it from the const user
-                   user.username === username && user.password === password
+                   return user.username === username && user.password === password
                })
-               if (user) {
+               // check if username is taken
+               if (username) {
+                   user = users.find((user)=>{
+                       return user.username === username;
+                   })
                    // send out this info as a json to the client
-                   res.json(user);
+                    res.json(user);
                }else {
                    //status code 200 all correct
                    //201 means created 3xx means redirection
@@ -42,5 +48,32 @@ module.exports = function(app) {
                }
            }
         //    res.send("hello from server");
+       })
+       app.post("/api/user", (req,res) => {
+       const user = req.body;
+       users.push(user);
+       res.json(user);
+       })
+
+       //find user by id
+       app.get("/api/user/:uid", (req,res) =>{
+         const uid = req.params["uid"];
+         let user;
+         user = users.find((user)=> {
+             return user._id === uid
+         })
+         res.json(user); 
+       })
+       app.put("api/user", (req,res) =>{
+        const newUser = req.body;
+        users = users.map(
+            (user)=>{
+                if(user._id === newUser._id){
+                    user = newUser
+                }
+                return user;
+            }
+        )
+        res.json(newUser);
        })
 };

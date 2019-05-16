@@ -9,24 +9,28 @@ export default class Profile extends Component {
         firstName: "",
         lastName: "",
         oldUsername: "",
-        password: ""
+        password: "",
+        oldUsername: ""
 
     }
 
     async componentDidMount(){
         const uid = this.props.match.params.uid;
-        // const res = await axios.get(`/api/user/${uid}`);
-         
-        let currentUser;
-        for (let user of this.props.users) {
-          if(user._id === uid) {
-             currentUser = user;
-              this.showUser(user)
-              return;
-          }
+        const res = await axios.get(`/api/user/${uid}`);
+        if(res.data){
+            this.showUser(res.data);
+        }else{
+            alert("No user is found with given id...");
         }
-        alert("No user is found with given id...");
-    }
+         
+        // let currentUser;
+        // for (let user of this.props.users) {
+        //   if(user._id === uid) {
+        //      currentUser = user;
+        //       this.showUser(user)
+        //       return;
+        //   }
+      
     showUser = (user) => {
         const {username, email,firstName, lastName,password} = user;
             this.setState({
@@ -49,9 +53,21 @@ export default class Profile extends Component {
             firstName,
             lastName,
             password,
+            // oldUsername: username
       }
-      this.props.updateUser(newUser)
+      if(username !== oldUsername) {
+         const res = await axios.get(`/api/user?username=${username}`);
+         return; 
+      }else {
+          
+        const res = await axios.put(`/api/user`, newUser);
+        alert("Update Successful")
+        this.showUser(res.data);
+      }
+    //   this.props.updateUser(newUser) old method
+
     }
+}
 
     render() {
         const{username,email,firstName,lastName,} = this.state;
