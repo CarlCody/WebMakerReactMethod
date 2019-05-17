@@ -1,3 +1,5 @@
+//Client Side
+
 import React, { Component } from "react";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -24,12 +26,14 @@ import WidgetEdit from "./components/widget/WidgetEdit";
 class App extends Component {
 
   state = {
-    users: [
-      { _id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com" },
-      { _id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com" },
-      { _id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com" },
-      { _id: "456", username: "Carl", password: "carl", firstName: "Carl", lastName: "Cody", email: "CarlCody_34@gmail.com" }
-    ],
+    //functions and data no longer needed thats,
+    // related to user
+    // users: [
+    //   { _id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com" },
+    //   { _id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com" },
+    //   { _id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com" },
+    //   { _id: "456", username: "Carl", password: "carl", firstName: "Carl", lastName: "Cody", email: "CarlCody_34@gmail.com" }
+    // ],
 
     websites: [
       { _id: "123", name: "Facebook", developerId: "456", description: "Lorem" },
@@ -65,32 +69,32 @@ class App extends Component {
   //   });
   // }
 
-  userNameInUse = (username) => {
-    for (let user of this.state.users) {
-      if (username === user.username) {
-        return true;
-      }
-    }
-    return false;
-  }
+  // userNameInUse = (username) => {
+  //   for (let user of this.state.users) {
+  //     if (username === user.username) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
 
-  updateUser = (newUser) => {
-    const newUsers = this.state.users.map((user) => {
-      if (user._id === newUser._id) {
-        if (user.username !== newUser.userName && this.userNameInUse(newUser.username)) {
-          alert("This username is taken");
-        } else {
-          user = newUser
-          alert("User information is updated..")
-        }
-      }
-      return user;
-    });
+  // updateUser = (newUser) => {
+  //   const newUsers = this.state.users.map((user) => {
+  //     if (user._id === newUser._id) {
+  //       if (user.username !== newUser.userName && this.userNameInUse(newUser.username)) {
+  //         alert("This username is taken");
+  //       } else {
+  //         user = newUser
+  //         alert("User information is updated..")
+  //       }
+  //     }
+  //     return user;
+  //   });
 
-    this.setState({
-      users: newUsers
-    })
-  }
+  //   this.setState({
+  //     users: newUsers
+  //   })
+  // }
 
 
 
@@ -204,8 +208,8 @@ render() {
         {/* <Route exact path="/profile" render={props => (<Profile {...props} users={this.state.users} updateUser={this.updateUser}/>)} />> */}
         <Route exact path="/login" component={Login} />
         <Route exact path="/register"  component={Register} />
-        <Route exact path="/user/:uid" render={props => (<Profile {...props} users={this.state.users} updateUser={this.updateUser} />)} />
-        <Route exact path="/user/:uid/website" render={props => (<WebsiteList {...props} websites={this.state.websites} />)} />
+        <Route exact path="/user/:uid"component={Profile} />
+        <Route exact path="/user/:uid/website" component={WebsiteList} />
         <Route exact path="/user/:uid/website/new" render={props => (<WebsiteNew {...props} websites={this.state.websites} addWeb={this.addWeb} />)} />
         <Route exact path="/user/:uid/website/:wid" render={props => (<WebsiteEdit {...props} websites={this.state.websites} deleteWeb={this.deleteWeb} editWeb={this.editWeb} />)} />
         <Route exact path="/user/:uid/website/:wid/page" render={props => (<PageList {...props} pages={this.state.pages} />)} />

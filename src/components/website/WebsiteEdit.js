@@ -1,17 +1,27 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
+import axios from 'axios';
 // import uuid from "uuid";
 
 export default class WebsiteEdit extends Component {
     state={
         uid: this.props.match.params.uid,
+        wid: this.props.match.params.wid,
         websites: [],
         name: "",
         description: ""
     }
     async componentDidMount(){
-        await this.filterWebsites(this.props.websites);
-    }    
+        const res = await axios.get(`/api/user/${this.state.uid}/website`)
+       await this.filterWebsites(res.data);
+        this.getWebsite(this.state.wid);
+    }  
+    
+    componentDidUpdate(prevProps, prevState,snapshot) {
+        if (prevProps.match.params.wid !== this.props.match.params.wid) {
+             this.getWebsite(this.props.match.params.wid);
+        }
+    }
         
     filterWebsites = (websites) => {
     const newWebsites = websites.filter(
@@ -20,14 +30,43 @@ export default class WebsiteEdit extends Component {
         this.setState({
             websites: newWebsites
         });
-    }
+    };
+
+    getWebsite = wid => {
+     let currentWeb;
+     for (let website of this.state.websites) {
+         if (website._id === wid) {
+             currentWeb = website;
+         }
+     }
+     this.setState({
+       name: currentWeb.name,
+       description: currentWeb.description
+    });
+
     
     onChange = e => {
         this.setState({
             [e.target.name]: e.target.value
-        })
-    }
+        });
+    };
+} 
     
+    delete = async () => {
+        // this.props.deleteWeb(this.props.match.params.wid);
+        await axios.delete(`/api/website/${this.props.match.params.wid}`)
+        this.props.history.push(`/user/${this.state.uid}/website`);
+    };
+
+    onSubmit = e => {
+        e.preventDefault();
+        this.props.editWeb(
+            this.props.match.params.uid,
+            this.state.name,
+            this.state.description
+        );
+        this.props.history(`/user/${this.state.uid}/website`);
+    };
     
 
   render() {
@@ -45,7 +84,7 @@ export default class WebsiteEdit extends Component {
         <div className="col-8">
             <button to="../user/:uid"></button>
             <span className="navbar-brand fixed-left mb-0 h1">Edit Websites</span>
-            <Link className="float-right pt-2" to={`/user/${uid}/website/new`}><i className="fas fa-check"></i></Link>
+            <Link className="float-right pt-2" to={`/user/${uid}/website/${wid}`}><i className="fas fa-check"></i></Link>
         </div>
     </nav>
     <section className="row">
@@ -106,4 +145,3 @@ export default class WebsiteEdit extends Component {
     )
   }
 }
-

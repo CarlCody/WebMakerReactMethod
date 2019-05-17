@@ -2,6 +2,8 @@
 
 module.exports = function(app) {
     //importing the user,website,page and widgets files
-    require("./services/user.server")(app); 
+    require("./services/user.server")(app);
+    require("./services/website.server")(app);
+
 };
 

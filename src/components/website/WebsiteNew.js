@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import uuid from "uuid";
+import axios from"axios";
 
 export default class WebsiteNew extends Component {
 
@@ -36,11 +37,19 @@ export default class WebsiteNew extends Component {
         const {name, description, uid} = this.state;
         e.preventDefault()
         const newWeb = {
-            _id: uuid(), name: name, developerId: uid, description: description
-        }
-        await this.props.addWeb(newWeb);
-        this.filterWebsites(this.props.websites);
-    }
+            _id: uuid(),
+             name: name,
+             developerId: uid,
+              description: description
+        };
+        await axios.post("/api/website", newWeb);
+        this.props.history.push(`/user${this.state.uid}/website`)
+        //Being replaced by the axios.post above
+        // await this.props.addWeb(newWeb);
+         // this.filterWebsites(this.props.websites);
+        
+       
+    };
 
     render() {
         const { uid } = this.state;
@@ -48,14 +57,14 @@ export default class WebsiteNew extends Component {
             <div>
                 <nav className="navbar navbar-dark bg-primary fixed-top row">
                     <div className="col-4 d-none d-lg-block">
-                        <Link to="/user/:uid/website"><i className="fas fa-chevron-left"></i></Link>
-                        <span className="navbar-brand fixed-left mb-0 h1">Websites</span>
-                        <Link className="float-right pt-2" to="/user/:uid/website"><i className="fas fa-plus-square"></i></Link>
+                        <Link to={`/user/${uid}/website`}><i className="fas fa-chevron-left"></i></Link>
+                        <span className="navbar-brand fixed-left mb-0 h1"><strong>Websites</strong></span>
+                        <span className="float-right pt-2" ><i className="fas fa-plus-square"></i></span>
                     </div>
                     <div className="col-8">
-                        <a className="d-lg-none" to="website-list.html"><i className="fas fa-chevron-left"></i></a>
-                        <span className="navbar-brand fixed-left mb-0 h1">New Websites</span>
-                    <button form="newWebForm">  <span class="float-right pt-2" to="website-edit.html"><i className="fas fa-check"></i></span></button>
+                        <a className="d-lg-4 d-none" to="website-list.html"><i className="fas fa-chevron-left"></i></a>
+                        <span className="navbar-brand fixed-left mb-0 h1"><strong>New Websites</strong></span>
+                    <button form="newWebForm">  <span class="float-right pt-2" to={`/user/${uid}/website/${wid}`}><i className="fas fa-check"></i></span></button>
                     </div>
                 </nav>
                 <section className="row">

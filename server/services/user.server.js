@@ -49,6 +49,7 @@ module.exports = function(app) {
            }
         //    res.send("hello from server");
        })
+       //create new website
        app.post("/api/user", (req,res) => {
        const user = req.body;
        users.push(user);
