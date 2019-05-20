@@ -1,3 +1,5 @@
+//server side
+
 module.exports = function(app) {
     const websites = [
         { _id: "123", name: "Facebook", developerId: "456", description: "Lorem" },
@@ -32,12 +34,25 @@ module.exports = function(app) {
           res.json(newWeb);
       })
      // Delete website with given wid
-     app.delet("/api/website/:wid", (req, res) => {
-         const wid = req.params['wid'];
-         websites.find((website) => (website._id === wid));
+     app.delete("/api/website/:wid", (req, res) => {
+         const wid = req.params["wid"];
+         const web = websites.find((website) => (website._id === wid)); 
         //  const index = websites.indexOf(web)
         // simplier method below
          websites.splice(websites.indexOf(web), 1);
          res.json(websites);
      })
+     // Update website 
+     app.put("/api/website", (req,res) =>{
+         const newWeb = req.body;
+         websites = websites.map(
+             (website) => {
+                if(websites._id === newWeb._id) {
+                    website = newWeb
+                }
+                return website;
+             } 
+         )
+         res.json(newWeb);
+     }) 
 }

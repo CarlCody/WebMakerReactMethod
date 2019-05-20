@@ -17,11 +17,11 @@ export default class WebsiteEdit extends Component {
         this.getWebsite(this.state.wid);
     }  
     
-    componentDidUpdate(prevProps, prevState,snapshot) {
-        if (prevProps.match.params.wid !== this.props.match.params.wid) {
-             this.getWebsite(this.props.match.params.wid);
-        }
-    }
+    // componentDidUpdate(prevProps, prevState,snapshot) {
+    //     if (prevProps.match.params.wid !== this.props.match.params.wid) {
+    //          this.getWebsite(this.props.match.params.wid);
+    //     }
+    // }
         
     filterWebsites = (websites) => {
     const newWebsites = websites.filter(
@@ -43,35 +43,42 @@ export default class WebsiteEdit extends Component {
        name: currentWeb.name,
        description: currentWeb.description
     });
-
+}
     
     onChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         });
     };
-} 
+
     
     delete = async () => {
-        // this.props.deleteWeb(this.props.match.params.wid);
+        // replaced by below this.props.deleteWeb(this.props.match.params.wid);
         await axios.delete(`/api/website/${this.props.match.params.wid}`)
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
 
-    onSubmit = e => {
+    onSubmit = async e => {
         e.preventDefault();
-        this.props.editWeb(
-            this.props.match.params.uid,
-            this.state.name,
-            this.state.description
-        );
+        // this.props.editWeb(
+        //     this.props.match.params.uid,
+        //     this.state.name,
+        //     this.state.description
+        // );
+        const newWeb = {
+            _id: this.state.wid,
+            name: this.state.name,
+            description: this.state.description,
+            developerId: this.state.uid
+        }
+        await axios.put("/api/website", newWeb);
         this.props.history(`/user/${this.state.uid}/website`);
     };
     
 
   render() {
 
-      const {uid} = this.state;
+      const {uid, wid} = this.state;
 
     return (
       <div>
@@ -82,7 +89,7 @@ export default class WebsiteEdit extends Component {
             <Link className="float-right pt-2" to={`/user/${uid}/website/new`}><i className="fas fa-plus-square"></i></Link>
         </div>
         <div className="col-8">
-            <button to="../user/:uid"></button>
+            <button form="editWebForm" to="../user/:uid"></button>
             <span className="navbar-brand fixed-left mb-0 h1">Edit Websites</span>
             <Link className="float-right pt-2" to={`/user/${uid}/website/${wid}`}><i className="fas fa-check"></i></Link>
         </div>

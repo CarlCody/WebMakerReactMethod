@@ -62,9 +62,9 @@ export default class WebsiteNew extends Component {
                         <span className="float-right pt-2" ><i className="fas fa-plus-square"></i></span>
                     </div>
                     <div className="col-8">
-                        <a className="d-lg-4 d-none" to="website-list.html"><i className="fas fa-chevron-left"></i></a>
+                        <Link className="d-lg-4 d-none" to="website-list.html"><i className="fas fa-chevron-left"></i></Link>
                         <span className="navbar-brand fixed-left mb-0 h1"><strong>New Websites</strong></span>
-                    <button form="newWebForm">  <span class="float-right pt-2" to={`/user/${uid}/website/${wid}`}><i className="fas fa-check"></i></span></button>
+                    <button form="newWebForm">  <span class="float-right pt-2" to={`/user/${uid}/website`}><i className="fas fa-check"></i></span></button>
                     </div>
                 </nav>
                 <section className="row">

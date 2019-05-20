@@ -4,6 +4,7 @@ import axios from "axios";
 
 
 export default class Profile extends Component {
+
     state = {
         username: "",
         email: "",
@@ -23,6 +24,7 @@ export default class Profile extends Component {
         }else{
             alert("No user is found with given id...");
         }
+    }
          
         //  let currentUser;
         //  for (let user of this.props.users) {
@@ -33,8 +35,8 @@ export default class Profile extends Component {
         //   }
       
     showUser = async user => {
-        const {username, email,firstName, lastName,password} = user;
-            this.setState({
+         const {username, email,firstName, lastName,password} = user;
+             this.setState({
            username,email,firstName,lastName,oldUsername: username,password
             })
     }
@@ -55,7 +57,7 @@ export default class Profile extends Component {
             lastName,
             password,
             oldUsername: username
-      }
+     } = this.state;
         if(username !== oldUsername) {
          const res = await axios.get(`/api/user?username=${username}`);
          return; 
@@ -68,7 +70,7 @@ export default class Profile extends Component {
     //   this.props.updateUser(newUser) old method
 
     }
-}
+
 
     render() {
         const{username,email,firstName,lastName,} = this.state;
