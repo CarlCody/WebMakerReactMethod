@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Axios from "axios";
 
 
 export default class PageEdit extends React.Component {
@@ -28,12 +29,15 @@ export default class PageEdit extends React.Component {
         this.filterPage(this.state.pid);
     }
 
-    getPage = (pid) => {
-        for(let page of this.props.pages) {
-            if(page._id === this.state.pid) {
-                return page;
-            }
-        }
+    getPage = async (pid) => {
+       const res = await Axios.get(`/api/page/${this.state.pid}`)
+       return res.data
+        //Rewritten above
+        // for(let page of this.props.pages) {
+        //     if(page._id === this.state.pid) {
+        //         return page;
+        //     }
+        // }
     }
 
     
@@ -43,12 +47,15 @@ export default class PageEdit extends React.Component {
         })
     }
 
-    onDelete = () => {
-        this.props.deletePage(this.state.pid);
+    onDelete = async () => {
+        await Axios.delete(`/api/page/${this.state.pid}`)
+
+        //Connecting to server side is other method above
+        // this.props.deletePage(this.state.pid);
         this.props.history.push(`/user${this.state.uid}/website${this.state.wid}/page`)
     }
 
-    onSubmit = e =>{
+    onSubmit = async e =>{
         e.preventDefault();
         const newPage = {
             _id: this.state.pid,
@@ -56,7 +63,10 @@ export default class PageEdit extends React.Component {
             websiteId: this.state.wid,
             title: this.state.title
         }
-        this.props.addPage(newPage);
+        //changed to server side method above
+        // this.props.addPage(newPage);
+        // Can ony add body when using put or push in a request of body.
+        await Axios.put("/api/page", newPage);
         this.props.history.push(`user/${this.state.uid}/website/${this.state.wid}/page`)
     }
 
