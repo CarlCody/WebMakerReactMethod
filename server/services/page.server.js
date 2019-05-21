@@ -48,5 +48,6 @@ module.exports = function(app)  {
               return page;
           }
       )
+      res.json(newPage)
   })
 };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import uuid from "uuid";
+import Axios from "axios";
 
 export default class WidgetChooser extends Component {
 
@@ -17,7 +18,10 @@ export default class WidgetChooser extends Component {
           url: ""
 
       }
-      this.prop.addWidget(newWidget);
+      // shouldnt have addWidgets in client needs moving to server side
+    //   this.prop.addWidget(newWidget);
+    // passing data as client into server , newWidget
+    Axios.post("/api/widget", newWidget)
       this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget${newWidget._id}`)
        }
 

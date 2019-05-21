@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import WidgetHeading from './WidgetHeading';
 import WidgetImage from "./WidgetImage";
 import WidgetYoutube from "./WidgetYoutube";
+import Axios from 'axios';
 
 export default class WidgetEdit extends Component {
 
@@ -26,14 +27,15 @@ export default class WidgetEdit extends Component {
         })
     }
 
-    getWidget = (wgid) => {
-        let currentWidget;
-        for(let widget of this.props.widgets){
-            if(widget._id === wgid){
-                currentWidget = widget;
-                break;
-            }
-        }
+    getWidget = async (wgid, pid) => {
+        const  res = await Axios.get(`/api/widget/${wgid}/page/${pid}/widget`)
+        const currentWidget = res.data;
+        // for(let widget of this.props.widgets){
+        //     if(widget._id === wgid){
+        //         currentWidget = widget;
+        //         break;
+        //     }
+        // }
         this.setState({
             name: currentWidget.name?
              currentWidget.name : "",
@@ -65,13 +67,17 @@ export default class WidgetEdit extends Component {
             widgetType
         }
 
-        this.props.editWidget(newWidget);
+        // this.props.editWidget(newWidget);
+        // was replaced by below
+        Axios.put("/api/widget")
         this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget`)
     }
 
     onDelete = () => {
         const {uid, wid, pid} = this.state;
-        this.props.deleteWidget(this.props.match.params.wgid);
+        Axios.delete(`/api/widget/${this.props.match.params.wgid}`)
+        // replaced because this on client side above
+        // this.props.deleteWidget(this.props.match.params.wgid);
         this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget`)
     }
         getWidget = (wgid) => {
