@@ -26,28 +26,22 @@ module.exports = function(app) {
            // login to check user credentials 
            if(username && password) {
                //Checking if we have this user
-               const user = users.find((user)=>{
+                user = users.find((user)=>{
                    //short way to write for() loop 
                    //Too check if we have username and password
                    // If we do get it from the const user
                    return user.username === username && user.password === password
                })
+            }
                // check if username is taken
-               if (username) {
+            else if (username) {
                    user = users.find((user)=>{
                        return user.username === username;
                    })
-                   // send out this info as a json to the client
-                    res.json(user);
-               }else {
-                   //status code 200 all correct
-                   //201 means created 3xx means redirection
-                   //Anything 400 is client errors or bad requests
-                   // 500's means server side errors
-                   res.status(404).send("error")
-               }
+                  
            }
-        //    res.send("hello from server");
+           res.json(user);
+        
        })
        //create new website
        app.post("/api/user", (req,res) => {

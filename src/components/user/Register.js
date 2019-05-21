@@ -99,7 +99,7 @@ import axios from"axios";
             <div className="form-group">
                 <label  htmlFor="verify password"> Verify Password</label>
                 <input placeholder="Please verify your password"
-                 type="password"
+                 type="password2"
                   className="form-control"
                    id="password2"
                     name="password2"

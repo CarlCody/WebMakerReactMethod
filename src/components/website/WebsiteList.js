@@ -20,7 +20,7 @@ filterWebsites = (websites) => {
         website => (website.developerId === this.state.uid) 
     )
     this.setState({
-        websites: newWebsites
+        websites: newWebsites 
     })
 }
 

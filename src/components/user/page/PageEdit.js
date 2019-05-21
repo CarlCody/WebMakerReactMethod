@@ -20,18 +20,21 @@ export default class PageEdit extends React.Component {
            wid: this.props.match.params.wid,
            pid: this.props.match.params.pid
         })
-        const page = this.getPage();
-        this.setState({
-           name: page.name,
-           title: page.title 
-        })
+        //The place where we call the page
+         this.getPage();
+        
 
         this.filterPage(this.state.pid);
     }
 
     getPage = async (pid) => {
+        // Waits for res to finish then setState 
+        // Otherwise runnung to fast
        const res = await Axios.get(`/api/page/${this.state.pid}`)
-       return res.data
+       this.setState({
+        name: res.data.name,
+        title: res.data.title 
+     })
         //Rewritten above
         // for(let page of this.props.pages) {
         //     if(page._id === this.state.pid) {
