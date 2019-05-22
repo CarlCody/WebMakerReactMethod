@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path');
 
-// Initialize bodyparser. We are turn on the feature to parse json data.
+// Initialize body parser. We are turn on the feature to parse json data.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

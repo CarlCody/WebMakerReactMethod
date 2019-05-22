@@ -17,7 +17,7 @@ module.exports = function(app) {
       websites that belong to given user  */
       /* Anytime you wanna get a placeholder inside the url
       pass, where going get it from req.params  */
-      app.get("/api/user/:uid/webiste", (req, res) => {
+      app.get("/api/user/:uid/website", (req, res) => {
           const uid = req.params["uid"];
           const result = websites.filter(
               (website) => (
@@ -25,6 +25,7 @@ module.exports = function(app) {
           )
           )
           //send the result into the client side
+          console.log(result);
           res.json(result);
       })
       //Create new website

@@ -19,11 +19,11 @@ async componentDidMount() {
 }
 
 filterPage = async (wid) => {
-    const currentPages = this.props.pages.filter(
-      (page) => (
-          page.websiteId === wid
-    )
-     )
+    // const currentPages = this.props.pages.filter(
+    //   (page) => (
+    //       page.websiteId === wid
+    // )
+    //  )
      const res = await axios.get(`/api/website/${this.state.wid}/page`)
      this.setState({
          pages: res.data
