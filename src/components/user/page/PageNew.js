@@ -50,6 +50,7 @@ export default class PageNew extends React.Component {
                     <span className="navbar-brand float-left mb-0 h1">New Page</span>
                     <button form="newPageForm"><i className="fas fa-check"></i></button>
                 </nav>
+                <div className="container">
                 <form id="newPageForm" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
@@ -77,7 +78,7 @@ export default class PageNew extends React.Component {
                             Cancel
                         </Link>
                         <button
-                            className="btn btn-lg btn-success float-right"
+                            className="btn btn-lg btn-success float-right" 
                         >
                             Submit
                         </button>
@@ -87,9 +88,8 @@ export default class PageNew extends React.Component {
                             <Link to={`/user/${uid}`}><i className="fas fa-users"></i></Link> </nav>
 
                     </footer>
-
-
                 </form>
+            </div>
             </div>
         )
     }

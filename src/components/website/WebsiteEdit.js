@@ -91,7 +91,7 @@ export default class WebsiteEdit extends Component {
         <div className="col-8">
             <button form="editWebForm" to="../user/:uid"></button>
             <span className="navbar-brand fixed-left mb-0 h1">Edit Websites</span>
-            <Link className="float-right pt-2" to={`/user/${uid}/website/${wid}`}><i className="fas fa-check"></i></Link>
+            <Link className="float-right pt-2" to={`/user/${uid}/website`}><i className="fas fa-check"></i></Link>
         </div>
     </nav>
     <section className="row">
@@ -102,7 +102,7 @@ export default class WebsiteEdit extends Component {
                     className="list-group-item"> 
                         <Link to={`/user/${uid}/website/${
                                                 website._id
-                                            }/page`}>Address Book App</Link>
+                                            }/page`}>{website.name}</Link>
                         <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
                     </li>
                 ))}
@@ -146,7 +146,7 @@ export default class WebsiteEdit extends Component {
     </section>
     <nav className="navbar navbar-dark bg-primary fixed-bottom">
         <span className="navbar-brand mb-0 h1"></span>
-        <button to="/user/:uid/website/:wid"><i className="fas fa-users"></i></button> </nav>
+        <button to={`/user/${uid}`}><i className="fas fa-users"></i></button> </nav>
 
       </div>
     )

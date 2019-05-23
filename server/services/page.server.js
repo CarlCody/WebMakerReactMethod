@@ -16,7 +16,7 @@ module.exports = function(app)  {
   app.post("/api/page", (req, res) => {
       const newPage = req.body;
       pages.push(newPage);
-      res.json(newPage)
+      res.json(newPage);
   })
   // get the page by given id.
   app.get("/api/page/:pid", (req,res) => {
