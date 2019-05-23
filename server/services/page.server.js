@@ -8,7 +8,7 @@ module.exports = function(app)  {
   app.get("/api/website/:wid/page", (req,res) => {
       const wid = req.params["wid"];
       let result = []
-     result = pages.filter((page) =>(page.website_Id === wid)
+     result = pages.filter((page) =>(page.websiteId === wid)
       );
       res.json(result);
   })

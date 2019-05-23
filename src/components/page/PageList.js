@@ -25,6 +25,7 @@ filterPage = async (wid) => {
     // )
     //  )
      const res = await axios.get(`/api/website/${this.state.wid}/page`)
+   
      this.setState({
          pages: res.data
      })
@@ -41,7 +42,7 @@ filterPage = async (wid) => {
 
         <Link to={`/user/${uid}/website`}><i className="fas fa-chevron-left"></i></Link>
         <span className="navbar-brand mb-0 h1">Pages</span>
-        <Link to={`/user/${uid}/website/wid/page/new`}><i className="fas fa-plus-square"></i></Link>
+        <Link to={`/user/${uid}/website/${wid}/page/new`}><i className="fas fa-plus-square"></i></Link>
 
 
     </nav>

@@ -25,7 +25,7 @@ module.exports = function(app) {
           )
           )
           //send the result into the client side
-          console.log(result);
+        
           res.json(result);
       })
       //Create new website

@@ -12,9 +12,9 @@ import WebsiteNew from "./components/website/WebsiteNew";
 import WebsiteList from './components/website/WebsiteList';
 import WebsiteEdit from "./components/website/WebsiteEdit";
 // Pages
-import PageList from "./components/user/page/PageList";
-import PageNew from "./components/user/page/PageNew";
-import PageEdit from "./components/user/page/PageEdit";
+import PageList from "./components/page/PageList";
+import PageNew from "./components/page/PageNew";
+import PageEdit from "./components/page/PageEdit";
 // Widgets
 import WidgetList from "./components/widget/WidgetList";
 import WidgetChooser from "./components/widget/WidgetChooser";
@@ -212,9 +212,9 @@ render() {
         <Route exact path="/user/:uid"component={Profile} />
         <Route exact path="/user/:uid/website" component={WebsiteList} />
         <Route exact path="/user/:uid/website/new" component={WebsiteNew} />
-        <Route exact path="/user/:uid/website/:wid" component={WebsiteEdit} />)} />
+        <Route exact path="/user/:uid/website/:wid" component={WebsiteEdit}/>
         <Route exact path="/user/:uid/website/:wid/page" component={PageList} />
-        <Route exact path="/user/:uid/website/:wid/page/new" component={PageNew} />)} />
+        <Route exact path="/user/:uid/website/:wid/page/new" component={PageNew} />
         <Route exact path="/user/:uid/website/:wid/page/:pid" component={PageEdit} />
         <Route exact path="/user/:uid/website/:wid/page/:pid/widget" component={WidgetList} />
         <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" component={WidgetChooser} />

@@ -13,7 +13,7 @@ export default class WebsiteEdit extends Component {
     }
     async componentDidMount(){
         const res = await axios.get(`/api/user/${this.state.uid}/website`)
-       await this.filterWebsites(res.data);
+        await this.filterWebsites(res.data);
         this.getWebsite(this.state.wid);
     }  
     
@@ -23,7 +23,7 @@ export default class WebsiteEdit extends Component {
     //     }
     // }
         
-    filterWebsites = (websites) => {
+    filterWebsites = websites => {
     const newWebsites = websites.filter(
             website => (website.developerId === this.state.uid) 
         )
@@ -37,13 +37,14 @@ export default class WebsiteEdit extends Component {
      for (let website of this.state.websites) {
          if (website._id === wid) {
              currentWeb = website;
+             break;
          }
      }
      this.setState({
        name: currentWeb.name,
        description: currentWeb.description
     });
-}
+};
     
     onChange = e => {
         this.setState({
@@ -54,7 +55,7 @@ export default class WebsiteEdit extends Component {
     
     delete = async () => {
         // replaced by below this.props.deleteWeb(this.props.match.params.wid);
-        await axios.delete(`/api/website/${this.props.match.params.wid}`)
+        await axios.delete(`/api/website/${this.state.wid}`)
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
 
@@ -78,7 +79,7 @@ export default class WebsiteEdit extends Component {
 
   render() {
 
-      const {uid, wid} = this.state;
+      const {uid,} = this.state;
 
     return (
       <div>
@@ -114,7 +115,7 @@ export default class WebsiteEdit extends Component {
             <div className="container">
                 <form id="editWebForm" onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label htmlfor="name">Website Name</label>
+                        <label htmlFor="name">Website Name</label>
                         <input placeholder="Enter Website Name"
                          className="form-control"
                           type="text"
@@ -124,7 +125,7 @@ export default class WebsiteEdit extends Component {
                          onChange={this.onChange}/>
                     </div>
                     <div className="form-group">
-                        <label htmlfor="description"> Website Description</label>
+                        <label htmlFor="description"> Website Description</label>
                         <textarea rows="5" placeholder="Enter Websites description here...."
                          className="form-control"
                          type="text"

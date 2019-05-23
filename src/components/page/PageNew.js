@@ -36,7 +36,7 @@ export default class PageNew extends React.Component {
         }
         // this.props.addPage(newpage);
         await Axios.post("/api/page", newPage)
-        this.props.history.push(`user/${this.state.uid}/website/${this.state.wid}/page`)
+        this.props.history.push(`/user/${this.state.uid}/website/${this.state.wid}/page`)
     }
 
     render() {

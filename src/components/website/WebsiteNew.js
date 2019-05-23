@@ -9,14 +9,11 @@ export default class WebsiteNew extends Component {
         uid: this.props.match.params.uid,
         websites: []
     }
-    componentDidMount(){
-        this.filterWebsites(this.props.websites);
-    }
-
-    componentDidUpdate(prevProps,prevState,snapshot){
-        if(prevProps.websites !== this.props.websites) {
-              
-        }
+    async componentDidMount(){
+        const res = await axios.get(`/api/user/${this.state.uid}/website`)
+        //filterwebsites is getting data from App.js in client side
+        // this.props.websites is from App.js
+        this.filterWebsites(res.data);
     }
         
     filterWebsites = (websites) => {
@@ -28,7 +25,7 @@ export default class WebsiteNew extends Component {
         })
     }
 
-    onchange = e => {
+    onChange = e => {
         this.setState({
             [e.target.name]: e.target.value  
         })
@@ -38,12 +35,12 @@ export default class WebsiteNew extends Component {
         e.preventDefault()
         const newWeb = {
             _id: uuid(),
-             name: name,
-             developerId: uid,
-              description: description
+            name: name,
+            developerId: uid,
+            description: description
         };
         await axios.post("/api/website", newWeb);
-        this.props.history.push(`/user${this.state.uid}/website`)
+        this.props.history.push(`/user/${this.state.uid}/website`)
         //Being replaced by the axios.post above
         // await this.props.addWeb(newWeb);
          // this.filterWebsites(this.props.websites);
@@ -64,7 +61,7 @@ export default class WebsiteNew extends Component {
                     <div className="col-8">
                         <Link className="d-lg-4 d-none" to="website-list.html"><i className="fas fa-chevron-left"></i></Link>
                         <span className="navbar-brand fixed-left mb-0 h1"><strong>New Websites</strong></span>
-                    <button form="newWebForm">  <span class="float-right pt-2" to={`/user/${uid}/website`}><i className="fas fa-check"></i></span></button>
+                    <button form="newWebForm"><span className="float-right pt-2" to={`/user/${uid}/website`}><i className="fas fa-check btn" ></i></span></button>
                     </div>
                 </nav>
                 <section className="row">
@@ -74,7 +71,7 @@ export default class WebsiteNew extends Component {
                                 {this.state.websites.map(
                                     (website) => (
                                             <li key={website._id}className="list-group-item">
-                                                <Link to="/user/:uid/website/:wid/page">Blogging App</Link>
+                                                <Link to="/user/:uid/website/:wid/page">{website.name}</Link>
                                                 <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
                                             </li>
                                         )
@@ -87,7 +84,7 @@ export default class WebsiteNew extends Component {
                         <div className="container">
                             <form id="newWebForm" onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <label htmlfor="">Name</label>
+                                    <label htmlFor="">Name</label>
                                     <input placeholder="Enter Website Name"
                                     className="form-control"
                                     type="text"
@@ -97,7 +94,7 @@ export default class WebsiteNew extends Component {
                                         value={this.state.name}/>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlfor="description">Description</label>
+                                    <label htmlFor="description">Description</label>
                                     <textarea rows="5"
                                     placeholder="Enter Websites description here...."
                                     className="form-control"
