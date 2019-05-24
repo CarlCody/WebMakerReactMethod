@@ -4,10 +4,10 @@ module.exports = function(app) {
         { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lore m ipsum" },
         { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg" },
         { _id: "567", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum" },
-        { _id: "678", widgee: "YOUTUBE ", pageId: "321", width: "100%", url: " https://youtu.be/AM 2Ivdi9c4E" }
+        { _id: "678", widgetType: "YOUTUBE ", pageId: "321", width: "100%", url: " https://youtu.be/AM 2Ivdi9c4E" }
       ];
 // find all widgets by given pid
-app.get(`/api/page/${pid}/widget`, (req,res) => {
+app.get(`/api/page/:pid/widget`, (req,res) => {
     //looking for all widgets with given pageId
     // if does not find any widget its still going to send out empty array through .map
     // filter pages that match following conditions
@@ -30,12 +30,12 @@ app.get(`/api/page/${pid}/widget`, (req,res) => {
 app.get("/api/widget/:wgid", (req, res) =>{
     const wgid = req.params["wgid"];
     const widget = widgets.find(
-        (widget) => (widget._id ===wgid)
+        (widget) => (widget._id === wgid)
     )
     res.json(widget)
 })
 // update  widget
-app.pu("/api/widget", (req,res) => {
+app.put("/api/widget", (req,res) => {
   const newWidget = req.body;
   widgets = widgets.map(
       (widget) => {
@@ -51,7 +51,7 @@ app.pu("/api/widget", (req,res) => {
 app.delete("/api/widget/:wgid", (req, res) =>{
     const wgid = req.params["wgid"];
     const widget = widgets.find(
-        (widget) => (widget._id ===wgid)
+        (widget) => (widget._id === wgid)
     );
     const index = widgets.indexOf(widget);
     widgets.splice(index, 1);

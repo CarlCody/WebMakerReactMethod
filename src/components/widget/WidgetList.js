@@ -36,9 +36,9 @@ export default class WidgetList extends Component {
         return (
             <div>
                 <nav className="nav-bar fixed-top navbar-light bg-light">
-                    <Link to="/user/:uid/website/:wid/page"><i className="fas fa-chevron-left"></i></Link>
+                    <Link to={`/user/${uid}/website/${wid}/page`}><i className="fas fa-chevron-left"></i></Link>
 
-                    <span className="navbar-brand mb-0 h1">Widgets</span>
+                    <span className="navbar-brand mb-0 h1 fixed-center">Widgets</span>
                     <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/new`}><i className="fas fa-plus-square float-right"></i></Link>
                 </nav>
                 <div className="container-fluid" >
@@ -87,15 +87,28 @@ export default class WidgetList extends Component {
                                             <div className="embed-responsive embed-responsive-16by9" style={{ width: widget.width }}>
                                                 <iframe src={widget.url} title={widget._id} frameborder="0"
                                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen></iframe>
+                                                    allowFullScreen></iframe>
                                             </div>
                                         </div>
                                         )
+                                        default:
+                                            return <div></div>;   
                             }
                         }
                     )
                 }
             </div>
+            
+            <footer className="navbar navbar-light fixed-bottom bg-light">
+                    <div className="full-width">
+                        <Link
+                            className="color-black float-right"
+                            to={`/user/${uid}`}
+                        >
+                            <i className="fas fa-user" />
+                        </Link>
+                    </div>
+                </footer>
         </div>
 
          )

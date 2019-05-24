@@ -54,8 +54,8 @@ filterPage = async (wid) => {
                     this.state.pages.map(
                        (page) => (
                            <li key={page._id} className="list-group-item">
-                            <Link to={`/user/${uid}/website/${wid}/page/${page.id}/widget`}>{page.name}</Link>
-                            <Link className="fas-fa-cog" to={`/user/${uid}/website/${wid}/page/${page.id}`}></Link>
+                            <Link to={`/user/${uid}/website/${wid}/page/${page._id}/widget`}>{page.name}</Link>
+                            <Link to={`/user/${uid}/website/${wid}/page/${page._id}`}><i className="float-right fas fa-cog"/></Link>
                            </li>
                     )
                     )

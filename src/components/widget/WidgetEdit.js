@@ -27,8 +27,8 @@ export default class WidgetEdit extends Component {
         })
     }
 
-    getWidget = async (wgid, pid) => {
-        const  res = await Axios.get(`/api/widget/${wgid}/page/${pid}/widget`)
+    getWidget = async (wgid) => {
+        const  res = await Axios.get(`/api/widget/${wgid}`)
         const currentWidget = res.data;
         // for(let widget of this.props.widgets){
         //     if(widget._id === wgid){
@@ -69,7 +69,7 @@ export default class WidgetEdit extends Component {
 
         // this.props.editWidget(newWidget);
         // was replaced by below
-        Axios.put("/api/widget")
+        Axios.put("/api/widget", newWidget)
         this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget`)
     }
 
@@ -80,24 +80,7 @@ export default class WidgetEdit extends Component {
         // this.props.deleteWidget(this.props.match.params.wgid);
         this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget`)
     }
-        getWidget = (wgid) => {
-            let currentWidget;
-            for(let widget of this.props.widgets){
-                if(widget._id === wgid){
-                    currentWidget = widget;
-                    break;
-                }
-            }
-            this.setState({
-                name: currentWidget.name? currentWidget.name : "",
-                text: currentWidget.text,
-                size: currentWidget.size,
-                widgetType: currentWidget.widgetType,
-                width: currentWidget.width,
-                url: currentWidget.url
-            });
 
-        }
         
         
     

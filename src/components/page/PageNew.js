@@ -34,7 +34,9 @@ export default class PageNew extends React.Component {
             websiteId: this.state.wid,
             title: this.state.title
         }
-        // this.props.addPage(newpage);
+        // Not using this function below no more send put request ask server to request page
+        // this.props.addPage(newPage);
+        //.post(adds new stuff url pass), thing added after but inside parenthesis
         await Axios.post("/api/page", newPage)
         this.props.history.push(`/user/${this.state.uid}/website/${this.state.wid}/page`)
     }
