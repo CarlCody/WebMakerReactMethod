@@ -79,7 +79,7 @@ export default class WidgetList extends Component {
                                     )
                                 case "YOUTUBE":
                                     return (
-                                        <div key={widgets._id}>
+                                        <div key={widget._id}>
                                             <div className="float-right">
                                                 <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}><i className="fas fa-cog"></i></Link>
                                                 <i className="fas fa-bars"></i>
@@ -92,7 +92,7 @@ export default class WidgetList extends Component {
                                         </div>
                                         )
                                         default:
-                                            return <div></div>;   
+                                            return <div key={widget._id}></div>;   
                             }
                         }
                     )

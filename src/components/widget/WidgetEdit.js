@@ -66,7 +66,6 @@ export default class WidgetEdit extends Component {
             width,
             widgetType
         }
-
         // this.props.editWidget(newWidget);
         // was replaced by below
         Axios.put("/api/widget", newWidget)

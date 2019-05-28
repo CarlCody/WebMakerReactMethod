@@ -77,8 +77,8 @@ export default class Profile extends Component {
             <div>
                 <nav className="navbar navbar-dark bg-primary fixed-top">
                     <span className="navbar-brand mb-0 h1">Profile</span>
-                    <button className="btn" form="profileform" href="profile.html"><i className="fas fa-check"></i></button> </nav>
-                <form id="profileform" onSubmit={this.onSubmit}>
+                    <button className="btn" form="profileForm" href="profile.html"><i className="fas fa-check"></i></button> </nav>
+                <form id="profileForm" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="Username">Username</label>
                         <input placeholder="Enter your User Name"
@@ -122,7 +122,7 @@ export default class Profile extends Component {
                                     onChange={this.onChange} /> </div>
                         </div>
                         <Link className="btn btn-primary btn-block" to={`/user/${this.props.match.params.uid}/website`}>Websites</Link>
-                        <Link to="/Login" className="btn btn-primary btn-block btn-danger" to="/login">LogOut</Link>
+                        <Link className="btn btn-primary btn-block btn-danger" to="/login">LogOut</Link>
                     </div>
                     <footer>
                         <nav className="navbar navbar-dark bg-primary fixed-bottom">

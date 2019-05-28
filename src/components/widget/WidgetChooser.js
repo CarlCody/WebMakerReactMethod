@@ -22,7 +22,7 @@ export default class WidgetChooser extends Component {
     //   this.prop.addWidget(newWidget);
     // passing data as client into server , newWidget
     Axios.post("/api/widget", newWidget)
-      this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget${newWidget._id}`)
+      this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget/${newWidget._id}`)
        }
 
     render() {
@@ -30,8 +30,8 @@ export default class WidgetChooser extends Component {
         return (
             <div>
                 <nav className="navbar navbar-light bg-light fixed-top">
-                    <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}></Link><i className="fa fa-chevron-left"></i>
-                    <span className="navbar-brand mb-0 h1">Choose Widget</span>
+                    <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}><i className="fa fa-chevron-left"></i></Link>
+                    <span className="navbar-brand padding-left">Choose Widget</span>
                     <span></span>
                 </nav>
                 <div className="container">
@@ -72,7 +72,7 @@ export default class WidgetChooser extends Component {
                 </div>
                 <nav className="navbar navbar-light bg-light fixed-bottom">
                     <span className="navbar-brand mb-0 h1"></span>
-                    <Link to="/login"	><i className="fas fa-users"></i></Link> </nav>
+                    <Link to="/login"><i className="fas fa-users"></i></Link> </nav>
             </div>
         )
     }
