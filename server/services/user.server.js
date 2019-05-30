@@ -3,12 +3,13 @@
 
 module.exports = function(app) {
     //users data
-    let  users =  [
+    // no longer needed because data been moved from server to database
+    let  users =  /*[
         { _id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com" },
         { _id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com" },
         { _id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com" },
         { _id: "456", username: "Carl", password: "carl", firstName: "Carl", lastName: "Cody", email: "CarlCody_34@gmail.com" }
-      ]
+    //   ]*/
       //to listen in for incoming code
       //create something called a pass
       //API stands for application programming  interface
