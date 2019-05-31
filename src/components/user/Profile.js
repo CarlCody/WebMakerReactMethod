@@ -65,9 +65,9 @@ export default class Profile extends Component {
             firstName,
             lastName
         }
-        const res = await axios.put("/api/user", newUser);
+         await axios.put("/api/user", newUser);
         alert("Update Successfully")
-        this.showUser(res.data);
+        // this.showUser(res.data);
     }
 
 
