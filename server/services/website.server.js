@@ -1,15 +1,16 @@
 //server side
 
 module.exports = function(app) {
-    const websites = [
-        {  name: "Facebook", developerId: "456", description: "Lorem" },
-        { name: "Tweeter", developerId: "456", description: "Lorem" },
-        { name: "Gizmodo", developerId: "456", description: "Lorem" },
-        { name: "Go", developerId: "123", description: "Lorem" },
-        {  name: "Tic Tac Toe", developerId: "123", description: "Lorem" },
-        {  name: "Checkers", developerId: "123", description: "Lorem" },
-        {  name: "Chess", developerId: "234", description: "Lorem" }
-      ];
+    const WebsiteModel = require("../models/website/website.model")
+    // const websites = [
+    //     {  name: "Facebook", developerId: "456", description: "Lorem" },
+    //     { name: "Tweeter", developerId: "456", description: "Lorem" },
+    //     { name: "Gizmodo", developerId: "456", description: "Lorem" },
+    //     { name: "Go", developerId: "123", description: "Lorem" },
+    //     {  name: "Tic Tac Toe", developerId: "123", description: "Lorem" },
+    //     {  name: "Checkers", developerId: "123", description: "Lorem" },
+    //     {  name: "Chess", developerId: "234", description: "Lorem" }
+    //   ];
       // Find all websites for given user id.
 
       /*When we receive this request the server needs
@@ -17,43 +18,44 @@ module.exports = function(app) {
       websites that belong to given user  */
       /* Anytime you wanna get a placeholder inside the url
       pass, where going get it from req.params  */
-      app.get("/api/user/:uid/website", (req, res) => {
+      app.get("/api/user/:uid/website", async (req, res) => {
           const uid = req.params["uid"];
-          const result = websites.filter(
-              (website) => (
-              website.developerId === uid
-          )
+          const websites = await websiteModel.findAllWebsitesForUser(uid);
+          res.json(websites);
           )
           //send the result into the client side
         
-          res.json(result);
+        //   res.json(result);
       })
       //Create new website
-      app.post("/api/website", (req, res) => {
+      app.post("/api/website", async (req, res) => {
           const newWeb = req.body;
-          websites.push(newWeb);
-          res.json(newWeb);
+         const data = await websiteModel.createWebsite(newWeb);
+         res.json(data)
       })
      // Delete website with given wid
-     app.delete("/api/website/:wid", (req, res) => {
+     app.delete("/api/website/:wid", async (req, res) => {
          const wid = req.params["wid"];
-         const web = websites.find((website) => (website._id === wid)); 
-        //  const index = websites.indexOf(web)
-        // simplier method below
-         websites.splice(websites.indexOf(web), 1);
-         res.json(websites);
-     })
+         const data = await websiteModel.deleteWebsite(wid);
+         res.json(data);
+    //      const web = websites.find((website) => (website._id === wid)); 
+    //     //  const index = websites.indexOf(web)
+    //     // simplier method below
+    //      websites.splice(websites.indexOf(web), 1);
+    //      res.json(websites);
+    //  })
      // Update website 
-     app.put("/api/website", (req,res) =>{
+     app.put("/api/website", (req,res) => {
          const newWeb = req.body;
-         websites = websites.map(
-             (website) => {
-                if(websites._id === newWeb._id) {
-                    website = newWeb
-                }
-                return website;
-             } 
-         )
-         res.json(newWeb);
+         const data =await websiteModel.updateWebsite(newWeb);
+        //  websites = websites.map(
+        //      (website) => {
+        //         if(websites._id === newWeb._id) {
+        //             website = newWeb
+        //         }
+        //         return website;
+        //      } 
+        //  )
+         res.json(data);
      }) 
 }
