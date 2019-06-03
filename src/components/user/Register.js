@@ -32,7 +32,7 @@ import axios from"axios";
 
       //check if useranme is available in server side
 
-      const res = await axios.get(`/api/user?username=${username}`);
+      const res = await axios.get(`/api/user?username${username}`);
 
       if(res.data){
           alert("Username is taken, please try another one");

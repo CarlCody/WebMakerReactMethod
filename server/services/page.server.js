@@ -1,14 +1,16 @@
 module.exports = function(app)  {
-   let pages = [    
-    { name: "Post 1", websiteId: "456", title: "Lorem" },
-    { name: "Post 2", websiteId: "456", title: "Lorem" },
-    { name: "Post 3", websiteId: "456", title: "Lorem" }
-  ];
+    const pageModel = require("../models/page/page.model")
+//    let pages = [    
+//     { name: "Post 1", websiteId: "456", title: "Lorem" },
+//     { name: "Post 2", websiteId: "456", title: "Lorem" },
+//     { name: "Post 3", websiteId: "456", title: "Lorem" }
+//   ];
  //get all pages for this website
-  app.get("/api/website/:wid/page", (req,res) => {
+  app.get("/api/website/:wid/page", async (req,res) => {
       //We need to know which website it belong to
       //Nd look for all websites it belong to
       const wid = req.params["wid"];
+      const data
       let result = []
       //For each page inside pages want to make sure page is equal to page.websiteId
      result = pages.filter((page) =>(page.websiteId === wid)
