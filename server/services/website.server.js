@@ -1,7 +1,7 @@
 //server side
 
 module.exports = function(app) {
-    const WebsiteModel = require("../models/website/website.model")
+    const websiteModel = require("../models/website/website.model");
     // const websites = [
     //     {  name: "Facebook", developerId: "456", description: "Lorem" },
     //     { name: "Tweeter", developerId: "456", description: "Lorem" },
@@ -22,11 +22,10 @@ module.exports = function(app) {
           const uid = req.params["uid"];
           const websites = await websiteModel.findAllWebsitesForUser(uid);
           res.json(websites);
-          )
+      })
           //send the result into the client side
         
         //   res.json(result);
-      })
       //Create new website
       app.post("/api/website", async (req, res) => {
           const newWeb = req.body;
@@ -38,6 +37,8 @@ module.exports = function(app) {
          const wid = req.params["wid"];
          const data = await websiteModel.deleteWebsite(wid);
          res.json(data);
+     }
+     )
     //      const web = websites.find((website) => (website._id === wid)); 
     //     //  const index = websites.indexOf(web)
     //     // simplier method below
@@ -45,7 +46,7 @@ module.exports = function(app) {
     //      res.json(websites);
     //  })
      // Update website 
-     app.put("/api/website", (req,res) => {
+     app.put("/api/website", async (req,res) => {
          const newWeb = req.body;
          const data =await websiteModel.updateWebsite(newWeb);
         //  websites = websites.map(

@@ -54,19 +54,19 @@ module.exports = function(app) {
        })
        //create new user
        //create new website
-       app.post("/api/user", (req,res) => {
-       const user = req.body;
-       const data = await userModel.createUser(user);
-       res.json(data) 
+       app.post("/api/user", async (req,res) => {
+            const user = req.body;
+            const data = await userModel.createUser(user);
+            res.json(data) 
     //    users.push(user);
     //    res.json(user);
        })
 
        //find user by _id
        app.get("/api/user/:uid", async (req,res) =>{
-         const uid = req.params["uid"];
-         let user;
-         user = await userModel."./user.schema"(uid);
+            const uid = req.params["uid"];
+            let user;
+            user = await userModel.findUserById(uid);
         //  user = users.find((user)=> {
         //      return user._id === uid
         //  })

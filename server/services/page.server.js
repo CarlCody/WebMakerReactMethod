@@ -10,7 +10,7 @@ module.exports = function(app)  {
       //We need to know which website it belong to
       //Nd look for all websites it belong to
       const wid = req.params["wid"];
-      const data
+    //   const data
       let result = []
       //For each page inside pages want to make sure page is equal to page.websiteId
      result = pages.filter((page) =>(page.websiteId === wid)

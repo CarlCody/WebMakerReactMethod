@@ -1,5 +1,5 @@
 module.exports = function(app) {
-     let widgets = [
+    //  let widgets = [
     //     {  widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO" },
     //     {  widgetType: "HEADING", pageId: "321", size: 4, text: "Lore m ipsum" },
     //     {  widgetType: "IMAGE", pageId: "321", width: "100%", url: "https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg" },

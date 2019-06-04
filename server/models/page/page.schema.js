@@ -5,7 +5,7 @@ const PageSchema = mongoose.Schema(
         name: String,
         websiteId:{type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'},
         title: String,
-        dateCreated: {type: date, default: Date.now}
+        dateCreated: {type: Date, default: Date.now}
     }, {collection:"page"}
 );
 

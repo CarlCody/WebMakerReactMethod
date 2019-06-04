@@ -22,7 +22,7 @@ import axios from"axios";
         const {username,password,password2} = this.state
         this.register(username,password,password2);
     }
-    //async is same as arrow fuction =,=>
+    //async is same as arrow function =,=>
     register = async (username,password,password2) => {
         //check is password matches
      if(password !== password2) {
@@ -30,7 +30,7 @@ import axios from"axios";
          return;
      }
 
-      //check if useranme is available in server side
+      //check if username is available in server side
 
       const res = await axios.get(`/api/user?username${username}`);
 

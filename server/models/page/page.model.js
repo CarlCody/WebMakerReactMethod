@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const pageSchema = require("./page.schema");
-const pageModel = mongoose.modelNames("pageModel", PageSchema);
+const PageSchema = require("./page.schema");
+const PageModel = mongoose.modelNames("pageModel", PageSchema);
 
 // find pages for website
 PageModel.findAllPagesForWebsite = (wid) => {
-    return pageModel.find({websiteId: wid});
+    return PageModel.find({websiteId: wid});
 }
 
 // Create page
@@ -13,12 +13,12 @@ PageModel.createPage = (page) => {
 }
 
 // Get page by given _id
-pageModel.findPageById = (pid) => {
+PageModel.findPageById = (pid) => {
     return PageModel.findById(pid);
 }
 
 // Delete page
-PageModel.deletePage = (pid => {
+PageModel.deletePage = (pid) => {
     return PageModel.deleteOne({_id: pid});
 
 }
