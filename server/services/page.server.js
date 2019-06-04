@@ -11,51 +11,53 @@ module.exports = function(app)  {
       //Nd look for all websites it belong to
       const wid = req.params["wid"];
     //   const data
-      let result = []
+      const websites = await pageModel.findAllPagesForWebsite(wid)
       //For each page inside pages want to make sure page is equal to page.websiteId
-     result = pages.filter((page) =>(page.websiteId === wid)
-      );
-      // Parse and send to client
-      res.json(result);
-  })
+    //  result = pages.filter((page) =>(page.websiteId === wid)
+    //   );
+    //   // Parse and send to client
+      res.json(websites);
+  });
    // Adding newPage
-  app.post("/api/page", (req, res) => {
+  app.post("/api/page", async (req, res) => {
       const newPage = req.body;
+      const data = await pageModel.createPage(newPage)
       //Pushing that into the pages array below
-      pages.push(newPage);
+    //   pages.push(newPage);
       //Tell the client to send it back
-      res.json(newPage);
-  })
+      res.json(data);
+  });
   // get the page by given id.
-  app.get("/api/page/:pid", (req, res) => {
+  app.get("/api/page/:pid", async (req, res) => {
       const pid = req.params["pid"];
-      const page = pages.find(
-          (page) => (page._id === pid)
-      )
-      res.json(page);
-  })
+      const page = await pageModel.findPageById(pid)
+    //       (page) => (page._id === pid)
+    //   )
+   res.json(page);
+  });
   // Delete page by given id
-  app.delete("/api/page/:pid", (req, res) => {
+  app.delete("/api/page/:pid", async (req, res) => {
       const pid =req.params["pid"];
-    const page = pages.find(
-        (page) => (page._id === pid)
-    )
-    const index = pages.indexOf(page);
-    pages.splice(index, 1);
-    res.json(page);
-  })
+     const data = await pageModel.deletePage(pid)
+    //     (page) => (page._id === pid)
+    // )
+    // const index = pages.indexOf(page);
+    // pages.splice(index, 1);
+     res.json(newPage);
+  });
 
   // Update(edit) page
-  app.put("/api/page", (req, res) => {
+  app.put("/api/page", async (req, res) => {
       const newPage = req.body;
-      pages = pages.map(
-          (page) => {
-              if(page._id === newPage._id) {
-                  page = newPage;
-              }
-              return page;
-          }
-      )
-      res.json(newPage)
-  })
+      const data = await pageModel.updatePage(newPage)
+    //   pages = pages.map(
+    //       (page) => {
+    //           if(page._id === newPage._id) {
+    //               page = newPage;
+    //           }
+    //           return page;
+    //       }
+    //   )
+       res.json(data)
+  });
 };

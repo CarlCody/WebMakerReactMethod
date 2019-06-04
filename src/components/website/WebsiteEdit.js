@@ -73,7 +73,7 @@ export default class WebsiteEdit extends Component {
             developerId: this.state.uid
         }
         await axios.put("/api/website", newWeb);
-        this.props.history(`/user/${this.state.uid}/website`);
+        this.props.history.push(`/user/${this.state.uid}/website`);
     };
     
 
@@ -92,7 +92,7 @@ export default class WebsiteEdit extends Component {
         <div className="col-8">
             <button form="editWebForm" to="../user/:uid"></button>
             <span className="navbar-brand fixed-left mb-0 h1">Edit Websites</span>
-            <Link className="float-right pt-2" to={`/user/${uid}/website`}><i className="fas fa-check"></i></Link>
+            <button className="float-right pt-2" form="editWebForm"><i className="fas fa-check"></i></button>
         </div>
     </nav>
     <section className="row">

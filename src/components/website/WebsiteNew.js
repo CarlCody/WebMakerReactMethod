@@ -60,7 +60,7 @@ export default class WebsiteNew extends Component {
                     <div className="col-8">
                         <Link className="d-lg-4 d-none" to="website-list.html"><i className="fas fa-chevron-left"></i></Link>
                         <span className="navbar-brand fixed-left mb-0 h1"><strong>New Websites</strong></span>
-                    <button form="newWebForm"><span className="float-right pt-2" to={`/user/${uid}/website`}><i className="fas fa-check btn" ></i></span></button>
+                    <button form="newWebForm"className="float-right btn"><i className="fas fa-check pt-2"/></button>
                     </div>
                 </nav>
                 <section className="row">
@@ -108,7 +108,7 @@ export default class WebsiteNew extends Component {
                                 >
                                     Cancel
                                 </Link>
-                                <button className="btn btn-lg btn-success float-right">
+                                <button form="newWebForm" className="btn btn-lg btn-success float-right" >
                                     Submit
                                 </button>
                             </form>

@@ -10,7 +10,7 @@ return UserModel.create(user);
 
 
 //Find user by credentials
-UserModel.FindUserByCredentials = (username,password) => {
+UserModel.findUserByCredentials = (username,password) => {
     return UserModel.findOne({username:username, password:password});
 }
 

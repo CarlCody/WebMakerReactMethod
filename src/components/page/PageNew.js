@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import uuid from "uuid"
 import Axios from "axios";
 
 export default class PageNew extends React.Component {
@@ -29,7 +28,6 @@ export default class PageNew extends React.Component {
     onSubmit = async e =>{
         e.preventDefault();
         const newPage = {
-            _id: uuid(),
             name:this.state.name,
             websiteId: this.state.wid,
             title: this.state.title
