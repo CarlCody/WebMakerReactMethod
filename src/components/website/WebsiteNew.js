@@ -70,8 +70,12 @@ export default class WebsiteNew extends Component {
                                 {this.state.websites.map(
                                     (website) => (
                                             <li key={website._id}className="list-group-item">
-                                                <Link to="/user/:uid/website/:wid/page">{website.name}</Link>
-                                                <Link className="float-right" to="/user/:uid/website/:wid"><i className="fas fa-cog"></i></Link>
+                                                <Link to={`/user/${uid}/website/${
+                                                website._id
+                                            }/page`}>{website.name}</Link>
+                                                <Link className="float-right" to={`/user/${uid}/website/${
+                                                website._id
+                                            }`}><i className="fas fa-cog"></i></Link>
                                             </li>
                                         )
                                     )
@@ -108,7 +112,7 @@ export default class WebsiteNew extends Component {
                                 >
                                     Cancel
                                 </Link>
-                                <button form="newWebForm" className="btn btn-lg btn-success float-right" >
+                                <button className="btn btn-lg btn-success float-right" >
                                     Submit
                                 </button>
                             </form>

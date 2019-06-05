@@ -51,16 +51,16 @@ module.exports = function(app) {
         //    }
            res.json(user);
         
-       })
+       });
        //create new user
        //create new website
        app.post("/api/user", async (req,res) => {
             const user = req.body;
             const data = await userModel.createUser(user);
-            res.json(data) 
+            res.json(data);
     //    users.push(user);
     //    res.json(user);
-       })
+       });
 
        //find user by _id
        app.get("/api/user/:uid", async (req,res) =>{
@@ -85,5 +85,5 @@ module.exports = function(app) {
         //     }
         // )
         // res.json(newUser);
-       })
+       });
 };

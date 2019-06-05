@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
-import uuid from "uuid";
 import Axios from "axios";
 
 export default class WidgetChooser extends Component {
 
-       createWidget = type => {
+       createWidget = async type => {
         const {uid,wid,pid} = this.props.match.params
       const newWidget ={
           name: "",
-          _id: uuid(),
           widgetType: type,
           pageId: pid,
           text: "",
@@ -21,8 +19,9 @@ export default class WidgetChooser extends Component {
       // shouldnt have addWidgets in client needs moving to server side
     //   this.prop.addWidget(newWidget);
     // passing data as client into server , newWidget
-    Axios.post("/api/widget", newWidget)
-      this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget/${newWidget._id}`)
+    const res = await Axios.post("/api/widget", newWidget)
+    // res.json(res.data);
+    this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget/${res.data._id}`)
        }
 
     render() {
