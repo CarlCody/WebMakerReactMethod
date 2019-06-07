@@ -73,7 +73,7 @@ export default class WidgetList extends Component {
                                                 <i className="fas fa-bars"></i>
                                             </div>
                                             <img className="img fluid"
-                                                src={widget.url} alt="" width={widget.width} />
+                                                src={widget.url} alt="" width={`${widget.width}%`} />
                                         </div>
 
                                     )

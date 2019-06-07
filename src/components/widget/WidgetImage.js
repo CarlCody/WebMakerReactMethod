@@ -64,9 +64,8 @@ export default class WidgetImage extends Component {
                              onChange ={this.onChange}
                              value={width} 
                              name="width" />
-
                             <div className="input-group-append">
-                                <span className="input-group-text">#</span>
+                                <span className="input-group-text">%</span>
                             </div>
                         </div>
                     </div>

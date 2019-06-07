@@ -7,7 +7,9 @@ export default class WebsiteNew extends Component {
 
     state={
         uid: this.props.match.params.uid,
-        websites: []
+        websites: [],
+        name: "",
+        description: ""
     }
     async componentDidMount(){
         const res = await axios.get(`/api/user/${this.state.uid}/website`)
@@ -92,9 +94,9 @@ export default class WebsiteNew extends Component {
                                     className="form-control"
                                     type="text"
                                     id="name"
-                                        name="name"
-                                        onChange={this.onChange}
-                                        value={this.state.name}/>
+                                    name="name"
+                                    onChange={this.onChange}
+                                    value={this.state.name} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="description">Description</label>

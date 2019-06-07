@@ -59,7 +59,7 @@ export default class WidgetYoutube extends Component {
                 <div className="form-group">
                     <label htmlFor="width">Width</label>
                     <div className="input-group">
-                        <input type="text"
+                        <input type="number"
                          className="form-control"
                           placeholder="Image Width"
                           onChange ={this.onChange}
