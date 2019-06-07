@@ -23,11 +23,11 @@ export default class WidgetYoutube extends Component {
             <nav className="navbar navbar-light bg-light fixed-top">
             <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget`}><i className="fas fa-chevron-left"></i></Link>
             <span className="navbar-brand mb0 h1">Widget Edit</span>
-            <button type="button" form="youtubeForm" onClick={this.state}><i className="fas fa-check"></i></button>
+            <button form="youtubeForm"><i className="fas fa-check"></i></button>
         </nav>
         <div className="container">
-            <form id="youtubeForm">
-                <div className="form-group" onSubmit={this.onSubmit}>
+            <form id="youtubeForm" onSubmit={this.onSubmit}>
+                <div className="form-group" >
                     <label htmlFor="name">Name</label>
                     <input placeholder="Enter a name for this widget...."
                      name="name"
