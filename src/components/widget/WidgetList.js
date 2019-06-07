@@ -84,7 +84,7 @@ export default class WidgetList extends Component {
                                                 <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}><i className="fas fa-cog"></i></Link>
                                                 <i className="fas fa-bars"></i>
                                             </div>
-                                            <div className="embed-responsive embed-responsive-16by9" style={{ width: widget.width }}>
+                                            <div className="embed-responsive embed-responsive-16by9" style={{ width: `${widget.width}%`} }>
                                                 <iframe src={widget.url} title={widget._id} frameborder="0"
                                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                     allowFullScreen></iframe>

@@ -66,6 +66,17 @@ export default class WidgetEdit extends Component {
             width,
             widgetType
         }
+        if(widgetType === "YOUTUBE") {
+            //split url into array of strings
+            const splitted = newWidget.url.split("/");
+            //count number of strings we have in splitted url
+            const length = splitted.length;
+            //get the last element in splitted url -- video id
+            const videoId = splitted[length -1];
+            // parse url into embedded version
+             newWidget.url = "https://www.youtube.com/embed/" + videoId;
+
+        }
         // this.props.editWidget(newWidget);
         // was replaced by below
         Axios.put("/api/widget", newWidget)
