@@ -8,25 +8,32 @@ import axios from"axios";
     state = {
         username: "",
         password: "",
-        password2: ""
+        password2: "",
+        showUsernameAlert: false,
+        showPasswordAlert: false 
     }
 
     onChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            showUsernameAlert: false,
+            showPasswordAlert: false
         })
     }
 
     onSubmit = e => {
         e.preventDefault();
-        const {username,password,password2} = this.state
+        const {username,password,password2,} = this.state
         this.register(username,password,password2);
     }
     //async is same as arrow function =,=>
-    register = async (username,password,password2) => {
+    async register(username,password,password2)  {
         //check is password matches
      if(password !== password2) {
-         alert("The passwords are not matched");
+        //  alert("The passwords are not matched");
+         this.setState({
+           showPasswordAlert: true
+         })
          return;
      }
 
@@ -35,7 +42,10 @@ import axios from"axios";
       const res = await axios.get(`/api/user?username=${username}`);
 
       if(res.data){
-          alert("Username is taken, please try another one");
+        //   alert("Username is taken, please try another one");
+        this.setState({
+            showUsernameAlert: true
+        })
           return;
       } else {
         const newUser = {
@@ -74,6 +84,8 @@ import axios from"axios";
         return (
 <div className="container">
         <h1>Register</h1>
+         {this.state.showPasswordAlert && (<div className="alert alert-danger">The password you entered doesn't match</div>)} 
+         {this.state.showUsernameAlert && (<div className="alert alert-danger"  >The username is taken,please try another one</div>)} 
         <form onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label htmlFor="username">Username</label>

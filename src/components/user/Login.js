@@ -8,12 +8,14 @@ export default class Login extends React.Component {
      
     state = {
         username: "",
-        password: ""
+        password: "",
+        showAlert: false
     }
 
     onChange = e => {
        this.setState({
-           [e.target.name]: e.target.value
+           [e.target.name]: e.target.value,
+            showAlert: false
        })
     }
 
@@ -22,7 +24,8 @@ export default class Login extends React.Component {
         const {username, password} = this.state;
         const user = {
             username,
-            password
+            password,
+           
         }
         this.login(user);
     }
@@ -34,7 +37,10 @@ export default class Login extends React.Component {
         if(res.data){
             this.props.history.push(`/user/${res.data._id}`)
         }else {
-            alert("Your username and password doesn't match our records");
+            // alert("Your username and password doesn't match our records");
+            this.setState({
+                showAlert: true
+            })
         }
     }
         
@@ -44,6 +50,9 @@ export default class Login extends React.Component {
         return (
             <div className="container">
                 <h1>Login</h1>
+                {this.state.showAlert?
+                 (<div className="alert alert-danger">Your username and password doesn't match our records</div>): null
+                }
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>

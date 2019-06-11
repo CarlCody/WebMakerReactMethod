@@ -12,6 +12,7 @@ export default class Profile extends Component {
         lastName: "",
         oldUsername: "",
         password: "",
+        showUsernameAlert: false
 
 
     }
@@ -43,7 +44,8 @@ export default class Profile extends Component {
 
     onChange = async e => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            showUsernameAlert: false
         })
     }
     onSubmit = async e => {
@@ -53,7 +55,10 @@ export default class Profile extends Component {
              // Check if username is available
             const res = await axios.get(`/api/user?username=${username}`);
             if(res.data){
-                alert("Username is taken, please try another one");
+                this.setState({
+                    showUsernameAlert: true
+                })
+                // alert("Username is taken, please try another one");
                 return;
             } 
         }
@@ -80,6 +85,7 @@ export default class Profile extends Component {
                     <button className="btn" form="profileForm" href="profile.html"><i className="fas fa-check"></i></button> </nav>
                 <form id="profileForm" onSubmit={this.onSubmit}>
                     <div className="form-group">
+                        <div className="alert alert-danger">Username is taken, please try another one</div>
                         <label htmlFor="Username">Username</label>
                         <input placeholder="Enter your User Name"
                             className="form-control"
@@ -91,6 +97,7 @@ export default class Profile extends Component {
                     </div>
                     <div>
                         <div className="form-group">
+                            <div className="alert alert-danger">Email is already in use, please try another one</div>
                             <label htmlFor="Email">Email</label>
                             <input placeholder="Enter your Email"
                                 type="text"
