@@ -3,7 +3,48 @@
 
 module.exports = function(app) {
 
+    const passport = require('passport');
+    const LocalStrategy = require('passport-local').Strategy;
     const userModel = require("../models/user/user.model")
+   // To store 
+    passport.serializeUser(serializeUser);
+
+  function serializeUser(user, done) {
+   done(null, user);
+ }
+
+ // to retrieve 
+ passport.deserializeUser(deserializeUser);
+
+function deserializeUser(user, done) {
+   userModel.findUserById(user._id).then(
+     function(user) {
+       done(null, user);
+     },
+     function(err) {
+       done(err, null);
+     }
+   );
+ }
+
+// Login with local stragedy
+passport.use(new LocalStragedy(localStragedy));
+
+async function localStragedy(username,password,done) {
+  const data = await userModel.findUserByCredentials(username,password);
+  if(data) {
+      return done(null, data);
+  } else {
+      return done(null, false);
+  }
+}
+
+  // Login
+  app.post("/api/login", passpart.authenticate("local"), (req, res) =>{
+      const user = req.user;
+      res.json(user);
+  })
+
     //users data
     // no longer needed because data been moved from server to database
     // let  users = [

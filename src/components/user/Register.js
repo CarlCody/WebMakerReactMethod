@@ -17,7 +17,9 @@ import axios from"axios";
         this.setState({
             [e.target.name]: e.target.value,
             showUsernameAlert: false,
-            showPasswordAlert: false
+            showPasswordAlert: false,
+            showUsernameLengthAlert: false,
+            showPasswordLengthAlert: false
         })
     }
 
@@ -28,6 +30,19 @@ import axios from"axios";
     }
     //async is same as arrow function =,=>
     async register(username,password,password2)  {
+        //check username length
+            if(username.length < 5) {
+                this.setState({
+                    showUsernameLengthAlert: true
+                })
+                return;
+            }
+        //check password length
+        if(password.length < 5) {
+            this.setState({
+                showPasswordLengthAlert: true
+            })
+        }
         //check is password matches
      if(password !== password2) {
         //  alert("The passwords are not matched");
@@ -86,6 +101,8 @@ import axios from"axios";
         <h1>Register</h1>
          {this.state.showPasswordAlert && (<div className="alert alert-danger">The password you entered doesn't match</div>)} 
          {this.state.showUsernameAlert && (<div className="alert alert-danger"  >The username is taken,please try another one</div>)} 
+         {this.state.showUsernameLengthAlert && (<div className="alert alert-danger"  >The username is to short, please make it at least six characters</div>)} 
+         {this.state.showPasswordLengthAlert && (<div className="alert alert-danger"  >The password is too short,please make it at least 8 characters</div>)} 
         <form onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label htmlFor="username">Username</label>

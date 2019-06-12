@@ -85,9 +85,10 @@ export default class Profile extends Component {
                     <button className="btn" form="profileForm" href="profile.html"><i className="fas fa-check"></i></button> </nav>
                 <form id="profileForm" onSubmit={this.onSubmit}>
                     <div className="form-group">
+                        <div className="alert alert-success">Update Successful</div>
                         <div className="alert alert-danger">Username is taken, please try another one</div>
                         <label htmlFor="Username">Username</label>
-                        <input placeholder="Enter your User Name"
+                        <input placeholder="Enter your UserName"
                             className="form-control"
                             type="text"
                             name="username"
