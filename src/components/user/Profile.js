@@ -18,6 +18,12 @@ export default class Profile extends Component {
     }
 
     async componentDidMount() {
+      const isLoggedIn = await this.props.loggedIn();
+      if(!isLoggedIn) {
+          this.props.history.push("/login");
+          return;
+      }
+
         const uid = this.props.match.params.uid;
         const res = await axios.get(`/api/user/${uid}`);
         if (res.data) {

@@ -4,7 +4,7 @@
 module.exports = function(app) {
 
     const passport = require('passport');
-    const LocalStrategy = require('passport-local').Strategy;
+    const LocalStragedy = require('passport-local').Strategy;
     const userModel = require("../models/user/user.model")
    // To store 
     passport.serializeUser(serializeUser);
@@ -39,10 +39,15 @@ async function localStragedy(username,password,done) {
   }
 }
 
-  // Login
-  app.post("/api/login", passpart.authenticate("local"), (req, res) =>{
+  // Login (response the user back to client)
+  app.post("/api/login", passport.authenticate("local"), (req, res) =>{
       const user = req.user;
       res.json(user);
+  })
+
+  // check if there is a user logged in
+  app.get("/api/login", (req, res) => {
+    res.send(req.isAuthenticated()? req.user: "0")
   })
 
     //users data
