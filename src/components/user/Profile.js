@@ -81,6 +81,13 @@ export default class Profile extends Component {
         // this.showUser(res.data);
     }
 
+    //Logout the user
+
+    logout = async () => {
+        await axios.post("/api/logout");
+        this.props.history.push("/login")
+    }
+
 
     render() {
         const { username, email, firstName, lastName, } = this.state;
@@ -136,7 +143,7 @@ export default class Profile extends Component {
                                     onChange={this.onChange} /> </div>
                         </div>
                         <Link className="btn btn-primary btn-block" to={`/user/${this.props.match.params.uid}/website`}>Websites</Link>
-                        <Link className="btn btn-primary btn-block btn-danger" to="/login">LogOut</Link>
+                        <button type="button" onClick={this.logout} className="btn btn-primary btn-block btn-danger">LogOut</button>
                     </div>
                     <footer>
                         <nav className="navbar navbar-dark bg-primary fixed-bottom">

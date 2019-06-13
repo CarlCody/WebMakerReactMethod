@@ -46,8 +46,23 @@ async function localStragedy(username,password,done) {
   })
 
   // check if there is a user logged in
-  app.get("/api/login", (req, res) => {
+  app.get("/api/loggedIn", (req, res) => {
     res.send(req.isAuthenticated()? req.user: "0")
+  })
+
+  //To Logout
+  app.post("/api/logout", (req, res) => {
+    req.logOut();
+    res.send(200);
+  })
+
+  // register
+  app.post("/api/register", async (req, res) => {
+    const user = req.body;
+    const data = await userModel.createUser(user);
+    req.login(data, () => {
+      res.json(data);
+    })
   })
 
     //users data

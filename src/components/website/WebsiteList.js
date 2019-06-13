@@ -9,6 +9,12 @@ export default class WebsiteList extends React.Component {
 }
 
   async componentDidMount(){
+    const isLoggedIn = await this.props.loggedIn();
+    if(!isLoggedIn) {
+        this.props.history.push("/login");
+        return;
+    }
+
       const res = await axios.get(`/api/user/${this.state.uid}/website`)
       //filterwebsites is getting data from App.js in client side
       // this.props.websites is from App.js

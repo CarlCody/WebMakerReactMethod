@@ -11,7 +11,13 @@ export default class PageNew extends React.Component {
         title: "",
     } 
 
-     componentDidMount() {
+    async componentDidMount() {
+        const isLoggedIn = await this.props.loggedIn();
+        if(!isLoggedIn) {
+            this.props.history.push("/login");
+            return;
+        }
+
         this.setState({
            uid: this.props.match.params.uid, 
            wid: this.props.match.params.wid
