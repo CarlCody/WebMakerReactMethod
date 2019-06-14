@@ -20,6 +20,8 @@ import WidgetList from "./components/widget/WidgetList";
 import WidgetChooser from "./components/widget/WidgetChooser";
 import WidgetEdit from "./components/widget/WidgetEdit";
 import Axios from "axios";
+import UserManage from "./components/user/UserManage";
+ 
 
 
 
@@ -29,7 +31,7 @@ class App extends Component {
   //Check if user is loggedIn
   loggedIn = async () => {
     const res = await Axios.get("/api/loggedIn");
-    return res.data !== 0;
+    return res.data;
   }
 
     //functions and data no longer needed thats,
@@ -217,6 +219,7 @@ render() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register"  component={Register} />
         <Route exact path="/user/:uid" render={props => <Profile {...props} loggedIn={this.loggedIn}/>} />
+        <Route exact path="/manage" render={props =><UserManage {...props} loggedIn={this.loggedIn}/>}/>
         <Route exact path="/user/:uid/website" render={props => <WebsiteList {...props} loggedIn={this.loggedIn}/>} />
         <Route exact path="/user/:uid/website/new"render={props => <WebsiteNew {...props} loggedIn={this.loggedIn}/>} />
         <Route exact path="/user/:uid/website/:wid" render={props => <WebsiteEdit {...props} loggedIn={this.loggedIn}/>} />

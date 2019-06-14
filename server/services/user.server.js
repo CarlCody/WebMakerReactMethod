@@ -6,6 +6,11 @@ module.exports = function(app) {
     const passport = require('passport');
     const LocalStragedy = require('passport-local').Strategy;
     const userModel = require("../models/user/user.model")
+    const bcrypt = require("bcryptjs");
+
+   // To generate a salt
+   const salt = bcrypt.genSaltSync(10);
+
    // To store 
     passport.serializeUser(serializeUser);
 
@@ -31,10 +36,22 @@ function deserializeUser(user, done) {
 passport.use(new LocalStragedy(localStragedy));
 
 async function localStragedy(username,password,done) {
-  const data = await userModel.findUserByCredentials(username,password);
-  if(data) {
+  //Check if username exists in DB
+  const data = await userModel.findUserByUsername(username);
+
+  // Check if password is match
+  if(data && bcrypt.compareSync(password, data.password)) {
       return done(null, data);
-  } else {
+      //Check if this user password hasn't been encrypted
+  } else if(data && password === data.password) {
+    //Encrypt there password
+    data.password =  bcrypt.hashSync(data.password, salt);
+   
+    const rest = await userModel.updateUser(data);
+    // console.log(rest);
+    return done(null, data);
+  }
+  else {
       return done(null, false);
   }
 }
@@ -59,6 +76,8 @@ async function localStragedy(username,password,done) {
   // register
   app.post("/api/register", async (req, res) => {
     const user = req.body;
+    // encrypt user password
+    user.password = bcrypt.hashSync(user.password, salt);
     const data = await userModel.createUser(user);
     req.login(data, () => {
       res.json(data);

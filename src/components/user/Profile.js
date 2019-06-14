@@ -12,14 +12,15 @@ export default class Profile extends Component {
         lastName: "",
         oldUsername: "",
         password: "",
-        showUsernameAlert: false
+        showUsernameAlert: false,
+        role: ''
 
 
     }
 
     async componentDidMount() {
       const isLoggedIn = await this.props.loggedIn();
-      if(!isLoggedIn) {
+      if(isLoggedIn === 0) {
           this.props.history.push("/login");
           return;
       }
@@ -42,9 +43,9 @@ export default class Profile extends Component {
     //   }
 
     showUser = async user => {
-        const { username, email, firstName, lastName, password } = user;
+        const { username, email, firstName, lastName, password,role } = user;
         this.setState({
-            username, email, firstName, lastName, oldUsername: username, password
+            username, email, firstName, lastName, oldUsername: username, password,role 
         })
     }
 
@@ -90,7 +91,7 @@ export default class Profile extends Component {
 
 
     render() {
-        const { username, email, firstName, lastName, } = this.state;
+        const { username, email, firstName, lastName,role } = this.state;
         return (
             <div>
                 <nav className="navbar navbar-dark bg-primary fixed-top">
@@ -144,11 +145,14 @@ export default class Profile extends Component {
                         </div>
                         <Link className="btn btn-primary btn-block" to={`/user/${this.props.match.params.uid}/website`}>Websites</Link>
                         <button type="button" onClick={this.logout} className="btn btn-primary btn-block btn-danger">LogOut</button>
+                        {
+                          role === "admin"? (<Link className="btn btn-warning btn-block"  to="/manage">Manage Users</Link>):null
+                        }
                     </div>
                     <footer>
                         <nav className="navbar navbar-dark bg-primary fixed-bottom">
                             <span className="navbar-brand mb-0 h1"></span>
-                            <Link to="/user/123"><i className="fas fa-users"></i></Link> </nav>
+                            <Link  to="/user/123"><i className="fas fa-users"></i></Link> </nav>
 
                     </footer>
 
