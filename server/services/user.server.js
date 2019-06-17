@@ -166,4 +166,9 @@ async function localStragedy(username,password,done) {
         // )
         // res.json(newUser);
        });
+       // Find all users
+       app.get("/api/users", async (req, res) => {
+         const data = await userModel.findAllUsers();
+         res.json(data)
+       })
 };
