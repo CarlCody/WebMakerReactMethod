@@ -5,7 +5,7 @@ import Axios from "axios";
 export default class UserManage extends Component {
 
     state= {
-        user:{},
+        user: {},
         users: []
     }
 
@@ -25,10 +25,19 @@ export default class UserManage extends Component {
      })
      const res = await Axios.get("/api/users");
      this.setState({
-         user: res.data
+         users: res.data
      })
-     console.log(res.data)
      
+    }
+    
+    delete = async (id) => {
+      await Axios.delete(`/api/user/${id}`);
+      const newUsers = this.state.users.filter(
+          (user) => user._id !== id
+      )
+      this.setState({
+          users: newUsers
+      })
     }
 
 
@@ -40,7 +49,7 @@ export default class UserManage extends Component {
             <nav className="navbar navbar-dark bg-primary fixed-top">
                 <Link to={`/user${user._id}`}><i className="fas fa-chevron-left"></i></Link>
                 <span className="navbar-brand mb-0 h1">User Management</span>
-                <button className="btn" form="profileForm" href="profile.html"><i className="fas fa-check"></i></button>
+                <button className="btn" form="profileForm" href="profile.html"></button>
                 <span></span>
             </nav>
             <div className="container">
@@ -48,8 +57,9 @@ export default class UserManage extends Component {
                  {
                       users.map(
                           user => (
-                              <li className="list-group-item">
+                              <li className="list-group-item" key={user._id}>
                                   {user.username}
+                                  <button onClick={this.delete.bind(this, user._id)} className="btn btn-danger float-right"> X </button>
                               </li>
                       )
                       )

@@ -171,4 +171,10 @@ async function localStragedy(username,password,done) {
          const data = await userModel.findAllUsers();
          res.json(data)
        })
+       //Delete User
+       app.delete("/api/user/:id", async (req, res) =>{
+         const id = req.params['id']
+         const data = await userModel.deleteUser(id);
+         res.json(data);
+       })
 };
